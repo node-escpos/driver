@@ -1,6 +1,7 @@
 {
   "name": "@node-escpos/bluetooth",
   "type": "module",
+  "private": true,
   "version": "0.0.1",
   "packageManager": "pnpm@7.2.1",
   "description": "",
@@ -48,7 +49,9 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@node-escpos/adapter": "workspace:*",
+    "eventemitter3": "^4.0.7",
     "mutable-buffer": "^2.0.3",
-    "@node-escpos/bluetooth": "workspace:*"
+    "usb": "*"
   }
 }
