@@ -1,7 +1,3 @@
-/**
- * [getParityBit description]
- * @return {[type]} [description]
- */
 export function getParityBit(str: string) {
   let parity = 0;
   const reversedCode = str.split("").reverse().join("");

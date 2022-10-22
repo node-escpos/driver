@@ -1,7 +1,8 @@
 {
   "cSpell.words": [
     "dohooo",
-    "escpos"
+    "escpos",
+    "serialport"
   ],
   "prettier.enable": false,
   "editor.codeActionsOnSave": {

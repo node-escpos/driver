@@ -41,7 +41,8 @@ export default class Network extends Adapter<[device: net.Socket]> {
     this.device.on("error", (err) => {
       callback && callback(err, this.device);
     }).on("data", (buf) => {
-      // console.log('printer say:', buf);
+      // eslint-disable-next-line no-console
+      console.log("printer say:", buf);
     }).connect(this.port, this.address, (err?: Error | null) => {
       clearInterval(connection_timeout);
       this.emit("connect", this.device);
@@ -57,7 +58,7 @@ export default class Network extends Adapter<[device: net.Socket]> {
    * @return
    */
   write(data: string | Buffer, callback?: (error: Error | null) => void) {
-    const handler: Function = (error?: Error | null) => {
+    const handler = (error?: Error) => {
       if (callback) callback(error ?? null);
     };
     if (typeof data === "string") this.device.write(data, handler);

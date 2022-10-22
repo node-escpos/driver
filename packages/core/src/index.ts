@@ -82,7 +82,7 @@ export interface CustomTableOptions {
 export class Printer<AdapterCloseArgs extends []> extends EventEmitter {
   public adapter: Adapter<AdapterCloseArgs>;
   public buffer = new MutableBuffer();
-  protected options: PrinterOptions;
+  protected options: PrinterOptions | undefined;
   protected encoding: string;
   protected width: number;
   protected _model: PrinterModel = null;
@@ -405,9 +405,9 @@ export class Printer<AdapterCloseArgs extends []> extends EventEmitter {
       `TXT_FONT_${utils.upperCase(family)}` as const
     ]);
     if (family.toUpperCase() === "A")
-      this.width = this.options && this.options.width || 42;
+      this.width = this.options?.width || 42;
     else
-      this.width = this.options && this.options.width || 56;
+      this.width = this.options?.width || 56;
     return this;
   }
 
@@ -614,7 +614,7 @@ export class Printer<AdapterCloseArgs extends []> extends EventEmitter {
       if (type === "EAN13" || type === "EAN8")
         parityBit = utils.getParityBit(convertCode);
     }
-    if (type == "CODE128" || type == "CODE93")
+    if (type === "CODE128" || type === "CODE93")
       codeLength = utils.codeLength(convertCode);
 
     this.buffer.write(`${codeLength + convertCode + (options.includeParity ? parityBit : "")}\x00`); // Allow to skip the parity byte
@@ -870,17 +870,17 @@ export class Printer<AdapterCloseArgs extends []> extends EventEmitter {
 
   /**
    * get one specific status from the printer using it's class
-   * @param  {string} statusClass
+   * @param  {string} StatusClass
    * @return {Promise} promise returning given status
    */
-  getStatus<T extends DeviceStatus>(statusClass: StatusClassConstructor<T>): Promise<T> {
+  getStatus<T extends DeviceStatus>(StatusClass: StatusClassConstructor<T>): Promise<T> {
     return new Promise((resolve) => {
       this.adapter.read((data) => {
         const byte = data.readInt8(0);
-        resolve(new statusClass(byte));
+        resolve(new StatusClass(byte));
       });
 
-      statusClass.commands().forEach((c) => {
+      StatusClass.commands().forEach((c) => {
         this.buffer.write(c);
       });
     });

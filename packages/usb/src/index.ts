@@ -1,6 +1,7 @@
 import os from "os";
 
 import { Adapter } from "@node-escpos/adapter";
+import type { Interface, InEndpoint, OutEndpoint, LibUSBException } from "usb";
 import { usb, getDeviceList, findByIds } from "usb";
 
 /**
@@ -16,15 +17,19 @@ const IFACE_CLASS = {
 };
 
 export default class USBAdapter extends Adapter<[timeout?: number]> {
-  constructor(vid?: number, pid?: number) {
+  device: usb.Device | null = null;
+  endpoint: OutEndpoint | null = null;
+  deviceToPcEndpoint: InEndpoint | null = null;
+
+  constructor(vid?: number | usb.Device, pid?: number) {
     super();
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
     const self = this;
-    this.device = null;
-    if (vid && pid) {
-      this.device = findByIds(vid, pid);
+    if (vid && pid && typeof vid === "number") {
+      this.device = findByIds(vid, pid) || null;
     }
-    else if (vid) {
-      // Set spesific USB device from devices array as coming from USB.findPrinter() function.
+    else if (vid && vid instanceof usb.Device) {
+      // Set specific USB device from devices array as coming from USB.findPrinter() function.
       // for example
       // let devices = escpos.USB.findPrinter();
       // => devices [ Device1, Device2 ];
@@ -41,14 +46,12 @@ export default class USBAdapter extends Adapter<[timeout?: number]> {
       throw new Error("Can not find printer");
 
     usb.on("detach", (device) => {
-      if (device == self.device) {
+      if (device === self.device) {
         self.emit("detach", device);
         self.emit("disconnect", device);
         self.device = null;
       }
     });
-
-    return this;
   }
 
   static findPrinter() {
@@ -81,9 +84,11 @@ export default class USBAdapter extends Adapter<[timeout?: number]> {
   }
 
   open(callback?: ((error: Error | null) => void) | undefined): this {
-    const self = this; let counter = 0; const index = 0;
-    this.device.open();
-    this.device.interfaces.forEach((iface: any) => {
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
+    const _this = this;
+    let counter = 0;
+    this.device?.open();
+    (this.device?.interfaces || []).forEach((iface: Interface) => {
       (function (iface) {
         iface.setAltSetting(iface.altSetting, () => {
           try {
@@ -100,18 +105,18 @@ export default class USBAdapter extends Adapter<[timeout?: number]> {
               }
             }
             iface.claim(); // must be called before using any endpoints of this interface.
-            iface.endpoints.filter((endpoint: any) => {
-              if (endpoint.direction == "out" && !self.endpoint)
-                self.endpoint = endpoint;
+            iface.endpoints.forEach((endpoint) => {
+              if (endpoint.direction === "out" && !_this.endpoint)
+                _this.endpoint = endpoint as OutEndpoint;
 
-              if (endpoint.direction == "in" && !self.deviceToPcEndpoint)
-                self.deviceToPcEndpoint = endpoint;
+              if (endpoint.direction === "in" && !_this.deviceToPcEndpoint)
+                _this.deviceToPcEndpoint = endpoint as InEndpoint;
             });
-            if (self.endpoint) {
-              self.emit("connect", self.device);
+            if (_this.endpoint) {
+              _this.emit("connect", _this.device);
               callback && callback(null);
             }
-            else if (++counter === self.device.interfaces.length && !self.endpoint) {
+            else if (++counter === _this.device?.interfaces?.length && !_this.endpoint) {
               callback && callback(new Error("Can not find endpoint from printer"));
             }
           }
@@ -128,21 +133,28 @@ export default class USBAdapter extends Adapter<[timeout?: number]> {
   }
 
   read(callback?: ((data: Buffer) => void) | undefined): void {
-    this.deviceToPcEndpoint.transfer(64, (error: any, data: Buffer) => {
-      callback && callback(data);
+    this.deviceToPcEndpoint?.transfer?.(64, (err, data) => {
+      if (err)
+        console.error(err);
+      else if (data)
+        callback?.(data);
     });
   }
 
   write(data: string | Buffer, callback?: ((error: Error | null) => void) | undefined): this {
     this.emit("data", data);
-    this.endpoint.transfer(data, callback);
+    this.endpoint?.transfer?.(data as Buffer, callback as (error: LibUSBException | undefined, actual: number) => void);
     return this;
   }
 
-  close(callback?: ((error: Error | null) => void) | undefined, timeout?: number | undefined): this {
+  close(
+    callback?: ((error: Error | null) => void) | undefined,
+    // TODO
+    _?: number | undefined,
+  ): this {
     if (!this.device) callback && callback(null);
     try {
-      this.device.close();
+      this.device?.close();
       usb.removeAllListeners("detach");
       callback && callback(null);
       this.emit("close", this.device);

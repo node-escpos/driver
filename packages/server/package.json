@@ -48,6 +48,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@node-escpos/adapter": "workspace:*",
     "eventemitter3": "^4.0.7"
   }
 }

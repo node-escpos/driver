@@ -13,12 +13,12 @@ function stdout(data: string | Buffer) {
     arr = arr
       .map(b => b.toString(16).toUpperCase())
       .map((b) => {
-        if (b.length == 1) b = `0${b}`;
+        if (b.length === 1) b = `0${b}`;
         return b;
       });
+    // eslint-disable-next-line no-console
     console.log(arr.join(" "));
   }
-  console.log();
 }
 
 /**

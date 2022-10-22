@@ -48,11 +48,13 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "eventemitter3": "^4.0.7",
     "get-pixels": "*",
     "iconv-lite": "*",
     "mutable-buffer": "^2.0.3",
     "ndarray": "^1.0.19",
-    "qr-image": "*"
+    "qr-image": "*",
+    "@node-escpos/adapter": "workspace:*"
   },
   "devDependencies": {
     "@types/get-pixels": "^3.3.2",

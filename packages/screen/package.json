@@ -49,7 +49,8 @@
   },
   "dependencies": {
     "iconv-lite": "^0.6.2",
-    "mutable-buffer": "^2.1.1"
+    "mutable-buffer": "^2.1.1",
+    "@node-escpos/adapter": "workspace:*"
   },
   "devDependencies": {
     "@types/get-pixels": "^3.3.2"

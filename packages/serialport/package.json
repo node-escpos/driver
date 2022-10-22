@@ -48,6 +48,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@node-escpos/adapter": "workspace:*",
     "serialport": "^10.4.0"
   }
 }

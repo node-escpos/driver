@@ -36,6 +36,9 @@
   "files": [
     "dist"
   ],
+  "dependencies": {
+    "eventemitter3": "^4.0.7"
+  },
   "scripts": {
     "build": "unbuild",
     "build:watch": "npx nodemon --exec 'pnpm run build' -w src -e 'ts'",

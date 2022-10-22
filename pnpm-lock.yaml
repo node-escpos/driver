@@ -57,34 +57,47 @@ importers:
       nodemon: 2.0.20
 
   packages/adapter:
-    specifiers: {}
-
-  packages/bluetooth:
-    specifiers:
-      '@node-escpos/bluetooth': workspace:*
-      mutable-buffer: ^2.0.3
-    dependencies:
-      '@node-escpos/bluetooth': 'link:'
-      mutable-buffer: 2.2.5
-
-  packages/console:
     specifiers:
       eventemitter3: ^4.0.7
     dependencies:
       eventemitter3: 4.0.7
 
+  packages/bluetooth:
+    specifiers:
+      '@node-escpos/adapter': workspace:*
+      eventemitter3: ^4.0.7
+      mutable-buffer: ^2.0.3
+      usb: '*'
+    dependencies:
+      '@node-escpos/adapter': link:../adapter
+      eventemitter3: 4.0.7
+      mutable-buffer: 2.2.5
+      usb: 2.5.2
+
+  packages/console:
+    specifiers:
+      '@node-escpos/adapter': workspace:*
+      eventemitter3: ^4.0.7
+    dependencies:
+      '@node-escpos/adapter': link:../adapter
+      eventemitter3: 4.0.7
+
   packages/core:
     specifiers:
+      '@node-escpos/adapter': workspace:*
       '@types/get-pixels': ^3.3.2
       '@types/ndarray': ^1.0.11
       '@types/node': ^10.0.0
       '@types/qr-image': ^3.2.4
+      eventemitter3: ^4.0.7
       get-pixels: '*'
       iconv-lite: '*'
       mutable-buffer: ^2.0.3
       ndarray: ^1.0.19
       qr-image: '*'
     dependencies:
+      '@node-escpos/adapter': link:../adapter
+      eventemitter3: 4.0.7
       get-pixels: 3.3.3
       iconv-lite: 0.6.3
       mutable-buffer: 2.2.5
@@ -98,16 +111,20 @@ importers:
 
   packages/network:
     specifiers:
+      '@node-escpos/adapter': workspace:*
       eventemitter3: ^4.0.7
     dependencies:
+      '@node-escpos/adapter': link:../adapter
       eventemitter3: 4.0.7
 
   packages/screen:
     specifiers:
+      '@node-escpos/adapter': workspace:*
       '@types/get-pixels': ^3.3.2
       iconv-lite: ^0.6.2
       mutable-buffer: ^2.1.1
     dependencies:
+      '@node-escpos/adapter': link:../adapter
       iconv-lite: 0.6.3
       mutable-buffer: 2.2.5
     devDependencies:
@@ -115,14 +132,18 @@ importers:
 
   packages/serialport:
     specifiers:
+      '@node-escpos/adapter': workspace:*
       serialport: ^10.4.0
     dependencies:
+      '@node-escpos/adapter': link:../adapter
       serialport: 10.4.0
 
   packages/server:
     specifiers:
+      '@node-escpos/adapter': workspace:*
       eventemitter3: ^4.0.7
     dependencies:
+      '@node-escpos/adapter': link:../adapter
       eventemitter3: 4.0.7
 
   packages/usb:

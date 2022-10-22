@@ -1,4 +1,3 @@
-"use strict";
 import getPixels from "get-pixels";
 import type { NdArray } from "ndarray";
 
