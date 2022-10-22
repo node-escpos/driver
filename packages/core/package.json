@@ -1,0 +1,63 @@
+{
+  "name": "@node-escpos/core",
+  "type": "module",
+  "version": "0.0.1",
+  "packageManager": "pnpm@7.2.1",
+  "description": "",
+  "author": "Caspian <zhaodonghao586@outlook.com> (https://github.com/dohooo)",
+  "license": "MIT",
+  "funding": "https://github.com/sponsors/dohooo",
+  "homepage": "https://github.com/dohooo/[pkg-name]#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dohooo/[pkg-name].git"
+  },
+  "bugs": "https://github.com/dohooo/[pkg-name]/issues",
+  "keywords": [],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./dist/index.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "build:watch": "npx nodemon --exec 'pnpm run build' -w src -e 'ts'",
+    "dev": "unbuild --stub",
+    "lint": "eslint .",
+    "prepublishOnly": "nr build",
+    "release": "bumpp && npm publish",
+    "start": "esno src/index.ts",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "get-pixels": "*",
+    "iconv-lite": "*",
+    "mutable-buffer": "^2.0.3",
+    "ndarray": "^1.0.19",
+    "qr-image": "*"
+  },
+  "devDependencies": {
+    "@types/get-pixels": "^3.3.2",
+    "@types/ndarray": "^1.0.11",
+    "@types/node": "^10.0.0",
+    "@types/qr-image": "^3.2.4"
+  }
+}

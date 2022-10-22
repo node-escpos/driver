@@ -1,0 +1,22 @@
+{
+  "paths": [
+    {
+      "directory": "[directory]",
+      "templates": [
+        "[template-name]"
+      ]
+    }
+  ],
+  "templatesConfig": [
+    {
+      "templateName": "[template-name]",
+      "inputsVariables": [
+        {
+          "key": "[key]",
+          "title": "[prompt-title]",
+          "required": "[is-required]"
+        }
+      ]
+    }
+  ]
+}
