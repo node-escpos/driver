@@ -28,7 +28,6 @@
 - ✅ [@node-escpos/usb-adapter](packages/usb/README.md)
 - 🛠 [@node-escpos/bluetooth-adapter](packages/bluetooth/README.md)	
 - 🛠 [@node-escpos/serialport-adapter](packages/serialport/README.md)	
-- 🛠 @node-escpos/editor (A low-code that allow to edit label or receipt and print it directly. ⚡️)
 
 ## Example
 
