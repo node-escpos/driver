@@ -16,7 +16,7 @@ const IFACE_CLASS = {
   HUB: 0x09,
 };
 
-export default class USBAdapter extends Adapter<[timeout?: number]> {
+export default class USBAdapter extends Adapter<[]> {
   device: usb.Device | null = null;
   endpoint: OutEndpoint | null = null;
   deviceToPcEndpoint: InEndpoint | null = null;
@@ -147,11 +147,7 @@ export default class USBAdapter extends Adapter<[timeout?: number]> {
     return this;
   }
 
-  close(
-    callback?: ((error: Error | null) => void) | undefined,
-    // TODO
-    _?: number | undefined,
-  ): this {
+  close(callback?: ((error: Error | null) => void) | undefined): this {
     if (!this.device) callback && callback(null);
     try {
       this.device?.close();

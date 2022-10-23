@@ -1,5 +1,5 @@
 {
-  "name": "@node-escpos/network",
+  "name": "@node-escpos/network-adapter",
   "type": "module",
   "version": "0.0.1",
   "packageManager": "pnpm@7.2.1",

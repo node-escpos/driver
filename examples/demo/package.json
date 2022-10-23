@@ -1,5 +1,5 @@
 {
-  "name": "@node-escpos/bluetooth",
+  "name": "demo",
   "type": "module",
   "private": true,
   "version": "0.0.1",
@@ -49,9 +49,12 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@node-escpos/adapter": "workspace:*",
-    "eventemitter3": "^4.0.7",
-    "mutable-buffer": "^2.0.3",
-    "usb": "*"
+    "@node-escpos/adapter": "workspace:*",		
+    "@node-escpos/console": "workspace:*",		
+    "@node-escpos/core": "workspace:*",		
+    "@node-escpos/network-adapter": "workspace:*",		
+    "@node-escpos/screen": "workspace:*",		
+    "@node-escpos/server": "workspace:*",		
+    "@node-escpos/usb-adapter": "workspace:*"
   }
 }

@@ -1,5 +1,5 @@
 packages:
  - 'packages/**'
- - '!packages/bluetooth'
- - '!packages/serialport'
+ - '!packages/bluetooth-adapter'
+ - '!packages/serialport-adapter'
  - 'examples/*'

@@ -1,6 +1,7 @@
 {
-  "name": "@node-escpos/serialport",
+  "name": "@node-escpos/bluetooth-adapter",
   "type": "module",
+  "private": true,
   "version": "0.0.1",
   "packageManager": "pnpm@7.2.1",
   "description": "",
@@ -49,6 +50,8 @@
   },
   "dependencies": {
     "@node-escpos/adapter": "workspace:*",
-    "serialport": "^10.4.0"
+    "eventemitter3": "^4.0.7",
+    "mutable-buffer": "^2.0.3",
+    "usb": "*"
   }
 }

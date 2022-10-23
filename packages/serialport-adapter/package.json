@@ -1,5 +1,5 @@
 {
-  "name": "@node-escpos/usb",
+  "name": "@node-escpos/serialport-adapter",
   "type": "module",
   "version": "0.0.1",
   "packageManager": "pnpm@7.2.1",
@@ -49,9 +49,6 @@
   },
   "dependencies": {
     "@node-escpos/adapter": "workspace:*",
-    "usb": "*"
-  },
-  "devDependencies": {
-    "@types/usb": "^1.5.4"
+    "serialport": "^10.4.0"
   }
 }
