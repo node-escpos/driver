@@ -2,7 +2,7 @@
   "name": "@node-escpos/bluetooth-adapter",
   "type": "module",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.0.0",
   "packageManager": "pnpm@7.2.1",
   "description": "",
   "author": "Caspian <zhaodonghao586@outlook.com> (https://github.com/dohooo)",

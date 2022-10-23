@@ -3,29 +3,31 @@
   "description": "ESC/POS Printer driver for Node.js.",
   "author": "Caspian <zhaodonghao586@outlook.com> (https://github.com/dohooo)",
   "scripts": {
-    
+    "build": "pnpm -F '@node-escpos/*' build",
+    "release": "changeset status & changeset version & pnpm run build & pnpm publish"
   },
-	"engines": {
-		"node": ">=16",
-		"pnpm": ">=7",
-		"npm": "please-use-pnpm",
-		"yarn": "please-use-pnpm"
-	},
-	"maintainers": [
-		{
-			"name": "Caspian",
-			"email": "zhaodonghao586@outlook.com"
-		}
-	],
+  "engines": {
+    "node": ">=16",
+    "pnpm": ">=7",
+    "npm": "please-use-pnpm",
+    "yarn": "please-use-pnpm"
+  },
+  "maintainers": [
+    {
+      "name": "Caspian",
+      "email": "zhaodonghao586@outlook.com"
+    }
+  ],
   "keywords": [],
   "license": "MIT",
   "dependencies": {
     "eventemitter3": "^4.0.7"
   },
   "devDependencies": {
-    "@dohooo/eslint-config": "*",
     "@antfu/ni": "^0.16.2",
     "@antfu/utils": "^0.5.2",
+    "@changesets/cli": "^2.25.0",
+    "@dohooo/eslint-config": "*",
     "@types/node": "^17.0.44",
     "bumpp": "^8.0.0",
     "eslint": "^8.17.0",

@@ -49,12 +49,12 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@node-escpos/adapter": "workspace:*",		
-    "@node-escpos/console": "workspace:*",		
-    "@node-escpos/core": "workspace:*",		
-    "@node-escpos/network-adapter": "workspace:*",		
-    "@node-escpos/screen": "workspace:*",		
-    "@node-escpos/server": "workspace:*",		
+    "@node-escpos/adapter": "workspace:*",
+    "@node-escpos/console": "workspace:*",
+    "@node-escpos/core": "workspace:*",
+    "@node-escpos/network-adapter": "workspace:*",
+    "@node-escpos/screen": "workspace:*",
+    "@node-escpos/server": "workspace:*",
     "@node-escpos/usb-adapter": "workspace:*"
   }
 }
