@@ -4,7 +4,8 @@
   "author": "Caspian <zhaodonghao586@outlook.com> (https://github.com/dohooo)",
   "scripts": {
     "build": "pnpm -F '@node-escpos/*' build",
-    "release": "changeset status & changeset version & pnpm run build & pnpm publish"
+    "publish": "pnpm -F '@node-escpos/*' publish",
+    "release": "changeset status & changeset version & pnpm run publish"
   },
   "engines": {
     "node": ">=16",
