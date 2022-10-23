@@ -7,7 +7,7 @@
 <br/>
 <br/>
 
-> It is a fork of [node-escpos](https://github.com/song940/node-escpos/blob/v3/.github/FUNDING.yml) with some improvements. Thanks to the original [author](https://github.com/song940). I'll bring more improvements in the future.
+> It is a fork of [node-escpos](https://github.com/song940/node-escpos) with some improvements. Thanks to the original [author](https://github.com/song940). And I'll bring more improvements in the future.
 
 ### Improvements
 - 🛠 It is rewritten in TypeScript.
