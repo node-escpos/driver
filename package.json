@@ -4,8 +4,8 @@
   "author": "Caspian <zhaodonghao586@outlook.com> (https://github.com/dohooo)",
   "scripts": {
     "build": "pnpm -F '@node-escpos/*' build",
-    "publish": "pnpm -F '@node-escpos/*' publish --access public",
-    "release": "changeset status & changeset version & pnpm run publish"
+    "publish": "pnpm -F '@node-escpos/*' publish",
+    "version": "changeset version"
   },
   "engines": {
     "node": ">=16",
@@ -27,6 +27,7 @@
   "devDependencies": {
     "@antfu/ni": "^0.16.2",
     "@antfu/utils": "^0.5.2",
+    "@changesets/changelog-git": "^0.1.13",
     "@changesets/cli": "^2.25.0",
     "@dohooo/eslint-config": "*",
     "@types/node": "^17.0.44",

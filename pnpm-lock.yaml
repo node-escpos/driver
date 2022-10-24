@@ -6,6 +6,7 @@ importers:
     specifiers:
       '@antfu/ni': ^0.16.2
       '@antfu/utils': ^0.5.2
+      '@changesets/changelog-git': ^0.1.13
       '@changesets/cli': ^2.25.0
       '@dohooo/eslint-config': '*'
       '@types/node': ^17.0.44
@@ -25,6 +26,7 @@ importers:
     devDependencies:
       '@antfu/ni': 0.16.3
       '@antfu/utils': 0.5.2
+      '@changesets/changelog-git': 0.1.13
       '@changesets/cli': 2.25.0
       '@dohooo/eslint-config': 0.0.7_wyqvi574yv7oiwfeinomdzmc3m
       '@types/node': 17.0.45
@@ -32,7 +34,7 @@ importers:
       eslint: 8.26.0
       esno: 0.16.3
       nodemon: 2.0.20
-      pnpm: 7.13.6
+      pnpm: 7.14.0
       rimraf: 3.0.2
       typescript: 4.8.4
       unbuild: 0.7.6
@@ -137,6 +139,14 @@ importers:
       mutable-buffer: 2.2.5
     devDependencies:
       '@types/get-pixels': 3.3.2
+
+  packages/serialport-adapter:
+    specifiers:
+      '@node-escpos/adapter': workspace:*
+      serialport: ^10.4.0
+    dependencies:
+      '@node-escpos/adapter': link:../adapter
+      serialport: 10.4.0
 
   packages/server:
     specifiers:
@@ -902,6 +912,102 @@ packages:
       picomatch: 2.3.1
     dev: true
 
+  /@serialport/binding-mock/10.2.2:
+    resolution: {integrity: sha512-HAFzGhk9OuFMpuor7aT5G1ChPgn5qSsklTFOTUX72Rl6p0xwcSVsRtG/xaGp6bxpN7fI9D/S8THLBWbBgS6ldw==}
+    engines: {node: '>=12.0.0'}
+    dependencies:
+      '@serialport/bindings-interface': 1.2.2
+      debug: 4.3.4
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /@serialport/bindings-cpp/10.7.0:
+    resolution: {integrity: sha512-Xx1wA2UCG2loS32hxNvWJI4smCzGKhWqE85//fLRzHoGgE1lSLe3Nk7W40/ebrlGFHWRbQZmeaIF4chb2XLliA==}
+    engines: {node: '>=12.17.0 <13.0 || >=14.0.0'}
+    requiresBuild: true
+    dependencies:
+      '@serialport/bindings-interface': 1.2.1
+      '@serialport/parser-readline': 10.3.0
+      debug: 4.3.4
+      node-addon-api: 4.3.0
+      node-gyp-build: 4.5.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /@serialport/bindings-interface/1.2.1:
+    resolution: {integrity: sha512-63Dyqz2gtryRDDckFusOYqLYhR3Hq/M4sEdbF9i/VsvDb6T+tNVgoAKUZ+FMrXXKnCSu+hYbk+MTc0XQANszxw==}
+    engines: {node: ^12.22 || ^14.13 || >=16}
+    dev: false
+
+  /@serialport/bindings-interface/1.2.2:
+    resolution: {integrity: sha512-CJaUd5bLvtM9c5dmO9rPBHPXTa9R2UwpkJ0wdh9JCYcbrPWsKz+ErvR0hBLeo7NPeiFdjFO4sonRljiw4d2XiA==}
+    engines: {node: ^12.22 || ^14.13 || >=16}
+    dev: false
+
+  /@serialport/parser-byte-length/10.3.0:
+    resolution: {integrity: sha512-pJ/VoFemzKRRNDHLhFfPThwP40QrGaEnm9TtwL7o2GihEPwzBg3T0bN13ew5TpbbUYZdMpUtpm3CGfl6av9rUQ==}
+    engines: {node: '>=12.0.0'}
+    dev: false
+
+  /@serialport/parser-cctalk/10.3.0:
+    resolution: {integrity: sha512-8ujmk8EvVbDPrNF4mM33bWvUYJOZ0wXbY3WCRazHRWvyCdL0VO0DQvW81ZqgoTpiDQZm5r8wQu9rmuemahF6vQ==}
+    engines: {node: '>=12.0.0'}
+    dev: false
+
+  /@serialport/parser-delimiter/10.3.0:
+    resolution: {integrity: sha512-9E4Vj6s0UbbcCCTclwegHGPYjJhdm9qLCS0lowXQDEQC5naZnbsELemMHs93nD9jHPcyx1B4oXkMnVZLxX5TYw==}
+    engines: {node: '>=12.0.0'}
+    dev: false
+
+  /@serialport/parser-inter-byte-timeout/10.3.0:
+    resolution: {integrity: sha512-wKP0QK85NHgvT6BBB1qBfKBBU4pf8kespNXAZBUYmFT+P4n8r8IZE2mqigCD+AiZcfWNQoAizwOsT/Jx/qeVig==}
+    engines: {node: '>=12.0.0'}
+    dev: false
+
+  /@serialport/parser-packet-length/10.3.0:
+    resolution: {integrity: sha512-bj0cWzt8YSQj/E5fRQVYdi4TsfTlZQrXlXrUwjyTsCONv8IPOHzsz+yY0fw5SEMiJtaLyqvPkCHLsttOd/zFsg==}
+    engines: {node: '>=8.6.0'}
+    dev: false
+
+  /@serialport/parser-readline/10.3.0:
+    resolution: {integrity: sha512-ki3ATZ3/RAqnqGROBKE7k+OeZ0DZXZ53GTca4q71OU5RazbbNhTOBQLKLXD3v9QZXCMJdg4hGW/2Y0DuMUqMQg==}
+    engines: {node: '>=12.0.0'}
+    dependencies:
+      '@serialport/parser-delimiter': 10.3.0
+    dev: false
+
+  /@serialport/parser-ready/10.3.0:
+    resolution: {integrity: sha512-1owywJ4p592dJyVrEJZPIh6pUZ3/y/LN6kGTDH2wxdewRUITo/sGvDy0er5i2+dJD3yuowiAz0dOHSdz8tevJA==}
+    engines: {node: '>=12.0.0'}
+    dev: false
+
+  /@serialport/parser-regex/10.3.0:
+    resolution: {integrity: sha512-tIogTs7CvTH+UUFnsvE7i33MSISyTPTGPWlglWYH2/5coipXY503jlaYS1YGe818wWNcSx6YAjMZRdhTWwM39w==}
+    engines: {node: '>=12.0.0'}
+    dev: false
+
+  /@serialport/parser-slip-encoder/10.3.0:
+    resolution: {integrity: sha512-JI0ILF5sylWn8f0MuMzHFBix/iMUTa79/Z95KaPZYnVaEdA7h7hh/o21Jmon/26P3RJwL1SNJCjZ81zfan+LtQ==}
+    engines: {node: '>=12.0.0'}
+    dev: false
+
+  /@serialport/parser-spacepacket/10.3.0:
+    resolution: {integrity: sha512-PDF73ClEPsClD1FEJZHNuBevDKsJCkqy/XD5+S5eA6+tY5D4HLrVgSWsg+3qqB6+dlpwf2CzHe+uO8D3teuKHA==}
+    engines: {node: '>=12.0.0'}
+    dev: false
+
+  /@serialport/stream/10.3.0:
+    resolution: {integrity: sha512-7sooi5fHogYNVEJwxVdg872xO6TuMgQd2E9iRmv+o8pk/1dbBnPkmH6Ka3st1mVE+0KnIJqVlgei+ncSsqXIGw==}
+    engines: {node: '>=12.0.0'}
+    dependencies:
+      '@serialport/bindings-interface': 1.2.1
+      debug: 4.3.4
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
   /@types/chai-subset/1.3.3:
     resolution: {integrity: sha512-frBecisrNGz+F4T6bcc+NLeolfiojh5FxW2klu669+8BARtyQv2C/GkNW6FUodVe4BroGMP/wER/YDGc7rEllw==}
     dependencies:
@@ -967,8 +1073,8 @@ packages:
     resolution: {integrity: sha512-w+tIMs3rq2afQdsPJlODhoUEKzFP1ayaoyl1CcnwtIlsVe7K7bA1NGm4s3PraqTLlXnbIN84zuBlxBWo1u9BLw==}
     dev: true
 
-  /@types/node/18.11.3:
-    resolution: {integrity: sha512-fNjDQzzOsZeKZu5NATgXUPsaFaTxeRgFXoosrHivTl8RGeV733OLawXsGfEk9a8/tySyZUyiZ6E8LcjPFZ2y1A==}
+  /@types/node/18.11.4:
+    resolution: {integrity: sha512-BxcJpBu8D3kv/GZkx/gSMz6VnTJREBj/4lbzYOQueUOELkt8WrO6zAcSPmp9uRPEW/d+lUO8QK0W2xnS1hEU0A==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:
@@ -1002,7 +1108,7 @@ packages:
   /@types/usb/1.5.4:
     resolution: {integrity: sha512-NOUza/8yuswu6RoECQyPHEjA34qpDaeONQ72fm+bCnnN2DJjDePAY+NsmV17H88oIlq4JlJ2mD5Kh5d6R2MwTQ==}
     dependencies:
-      '@types/node': 18.11.3
+      '@types/node': 18.11.4
     dev: true
 
   /@types/w3c-web-usb/1.0.6:
@@ -1753,7 +1859,6 @@ packages:
         optional: true
     dependencies:
       ms: 2.1.2
-    dev: true
 
   /decamelize-keys/1.1.0:
     resolution: {integrity: sha512-ocLWuYzRPoS9bfiSdDd3cxvrzovVMZnRDVEzAs+hWIVXGDbHxWMECij2OBuyB/An0FFW/nLuq6Kv1i/YC5Qfzg==}
@@ -2760,7 +2865,7 @@ packages:
     resolution: {integrity: sha512-6slSBEV1lMKcX13DBifvnDFpNno5WXhw4j/ff7RI0y51BZiDqEe5dNhhjhIQ3iCOQuzsm2MbVzmwqbN78BBhPg==}
     hasBin: true
     dependencies:
-      tsx: 3.10.4
+      tsx: 3.11.0
     dev: true
 
   /espree/9.4.0:
@@ -3954,7 +4059,6 @@ packages:
 
   /ms/2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
-    dev: true
 
   /ms/2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
@@ -4344,8 +4448,8 @@ packages:
     engines: {node: '>=4.0.0'}
     dev: false
 
-  /pnpm/7.13.6:
-    resolution: {integrity: sha512-KIGf//0cojjX3cUL63gvAk8d5t9tg+5h6AxLGyxQwoCPtpsjXafm/auIJyDUUh9RVmcPusJxdiONkgxPnbW1YA==}
+  /pnpm/7.14.0:
+    resolution: {integrity: sha512-yUKSckJLBIw8ByqMKJF9497kzwrevuQhdL6o2eYbky7woAictxoGX9veBdQYCdBemuC239X2FJq/LGTpCjQ55w==}
     engines: {node: '>=14.6'}
     hasBin: true
     dev: true
@@ -4763,6 +4867,28 @@ packages:
       - supports-color
     dev: false
 
+  /serialport/10.4.0:
+    resolution: {integrity: sha512-PszPM5SnFMgSXom60PkKS2A9nMlNbHkuoyRBlzdSWw9rmgOn258+V0dYbWMrETJMM+TJV32vqBzjg5MmmUMwMw==}
+    engines: {node: '>=12.0.0'}
+    dependencies:
+      '@serialport/binding-mock': 10.2.2
+      '@serialport/bindings-cpp': 10.7.0
+      '@serialport/parser-byte-length': 10.3.0
+      '@serialport/parser-cctalk': 10.3.0
+      '@serialport/parser-delimiter': 10.3.0
+      '@serialport/parser-inter-byte-timeout': 10.3.0
+      '@serialport/parser-packet-length': 10.3.0
+      '@serialport/parser-readline': 10.3.0
+      '@serialport/parser-ready': 10.3.0
+      '@serialport/parser-regex': 10.3.0
+      '@serialport/parser-slip-encoder': 10.3.0
+      '@serialport/parser-spacepacket': 10.3.0
+      '@serialport/stream': 10.3.0
+      debug: 4.3.4
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
   /serve-static/1.15.0:
     resolution: {integrity: sha512-XGuRDNjXUijsUL0vl6nSD7cwURuzEgglbOaFuZM9g3kwDXOWVTck0jLzjPzGD+TazWbboZYu52/9/XPdUgne9g==}
     engines: {node: '>= 0.8.0'}
@@ -5114,8 +5240,8 @@ packages:
       typescript: 4.8.4
     dev: true
 
-  /tsx/3.10.4:
-    resolution: {integrity: sha512-sBxeSgUAPVqRgBPk6TY0yFiNDUlva9rA+Nj46oYEd89FXVD2MFWChFhybTtq7Qh1Ies/O75mQNwpLuO7m8gToA==}
+  /tsx/3.11.0:
+    resolution: {integrity: sha512-q+q4xxu41+AafVwvAGqtNJ1ekPFd33ZhTMXvgIpHMqv/W89efwDRE9IyjhEAZm5iTHsshKaf1BYWSk789BrNCA==}
     hasBin: true
     dependencies:
       '@esbuild-kit/cjs-loader': 2.4.0
