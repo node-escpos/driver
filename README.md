@@ -7,7 +7,7 @@
 <br/>
 <br/>
 
-> It is a fork of [node-escpos](https://github.com/song940/node-escpos) with some improvements. Thanks to the original [author](https://github.com/song940). And I'll bring more improvements in the future.
+> It is a fork of [node-escpos](https://github.com/node-escpos/driver) with some improvements. Thanks to the original [author](https://github.com/song940). And I'll bring more improvements in the future.
 
 ### Improvements
 - 🛠 It is rewritten in TypeScript.
@@ -42,7 +42,18 @@ const device = new USB();
 const options = { encoding: "GB18030" /* default */ }
 const printer = new Printer(device, options);
 
-device.open(function(error){
+device.open(async function(err){
+  if(err){
+    // handle error
+    return
+  }
+
+  let printer = new Printer(device, {});
+
+  // Path to png image
+  const tux = join();
+  const image = await Image.load(tux);
+
   printer
     .font("a")
     .align("ct")
@@ -50,7 +61,7 @@ device.open(function(error){
     .size(1, 1)
     .text("The quick brown fox jumps over the lazy dog")
     .text("敏捷的棕色狐狸跳过懒狗")
-    .barcode(1234567, "EAN13", { width: 50, height: 50 })
+    .barcode(112233445566, "EAN13", { width: 50, height: 50 })
     .table(["One", "Two", "Three"])
     .tableCustom(
       [
@@ -60,11 +71,15 @@ device.open(function(error){
       ],
       { encoding: "cp857", size: [1, 1] }, // Optional
     )
-    .qrimage("https://github.com/song940/node-escpos")
-    .then((printer) => {
-      printer.cut();
-      printer.close();
-    });
+    
+  // inject qrimage to printer
+  printer = await printer.qrimage("https://github.com/node-escpos/driver")
+  // inject image to printer
+  printer = await printer.image(image, "s8")
+
+  printer
+    .cut()
+    .close()
 });
 ````
 - See `./examples/demo` for more examples.

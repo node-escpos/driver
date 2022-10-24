@@ -24,7 +24,7 @@ device.open(function(){
   .text('The quick brown fox jumps over the lazy dog')
   .text('敏捷的棕色狐狸跳过懒狗')
   .barcode('12345678', 'EAN8')
-  .qrimage('https://github.com/song940/node-escpos', function(err){
+  .qrimage('https://github.com/node-escpos/driver', function(err){
     this.cut();
     this.close();
   });
