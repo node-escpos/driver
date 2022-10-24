@@ -41,7 +41,6 @@
     "build:watch": "npx nodemon --exec 'pnpm run build' -w src -e 'ts'",
     "dev": "unbuild --stub",
     "lint": "eslint .",
-    "prepublishOnly": "nr build",
     "release": "bumpp && npm publish",
     "start": "esno src/index.ts",
     "test": "vitest",
