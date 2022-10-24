@@ -1,5 +1,12 @@
 # @node-escpos/usb-adapter
 
+## 0.0.2
+
+### Patch Changes
+
+- bc7e2e5: 🐛 Solved a bug that printing images is not correct.
+  🧾 Update demo of README.
+
 ## 0.0.1
 
 ### Patch Changes
