@@ -148,7 +148,7 @@ export default class USBAdapter extends Adapter<[]> {
   }
 
   close(callback?: ((error: Error | null) => void) | undefined): this {
-    if (!this.device) callback && callback(null);
+    if (!this.device) callback?.(new Error("Device not found"));
     try {
       this.device?.close();
       usb.removeAllListeners("detach");

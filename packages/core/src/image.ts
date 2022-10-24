@@ -22,12 +22,11 @@ export default class Image {
       );
     }
 
-    this.data = rgbaData.map(
-      ([r, g, b, a]) => a !== 0 && r > 200 && g > 200 && b > 200,
-    );
+    // Convert RGB to grayscale:
+    this.data = rgbaData.map(([r, g, b, a]) => this.RGB2Gray(r, g, b, a));
   }
 
-  private get size() {
+  get size() {
     return {
       width: this.pixels.shape[0],
       height: this.pixels.shape[1],
@@ -35,11 +34,13 @@ export default class Image {
     };
   }
 
-  /**
-   * [toBitmap description]
-   * @param  {[type]} density [description]
-   * @return {[type]}         [description]
-   */
+  private RGB2Gray(r: number, g: number, b: number, a: number) {
+    if (a === 0) {
+      return false;
+    }
+    return 0.29900 * r + 0.57800 * g + 0.11400 * b < 128;
+  }
+
   toBitmap(density = 24) {
     const result: number[][] = [];
     let x, y, b, l, i;
@@ -56,12 +57,13 @@ export default class Image {
         for (b = 0; b < density; b++) {
           i = x * c + (b >> 3);
 
-          if (ld[i] === undefined) ld[i] = 0;
+          if (ld[i] === undefined) { ld[i] = 0; }
 
           l = y * density + b;
           if (l < this.size.height) {
-            if (this.data[l * this.size.width + x])
+            if (this.data[l * this.size.width + x]) {
               ld[i] += (0x80 >> (b & 0x7));
+            }
           }
         }
       }
@@ -73,12 +75,8 @@ export default class Image {
     };
   }
 
-  /**
-   * [toRaster description]
-   * @return {[type]} [description]
-   */
   toRaster() {
-    const result = [];
+    const result: number[] = [];
     const { width, height } = this.size;
 
     // n blocks of lines
@@ -89,13 +87,15 @@ export default class Image {
         for (let b = 0; b < 8; b++) {
           const i = x * 8 + b;
 
-          if (result[y * n + x] === undefined)
+          if (result[y * n + x] === undefined) {
             result[y * n + x] = 0;
+          }
 
           const c = x * 8 + b;
           if (c < width) {
-            if (this.data[y * width + i])
+            if (this.data[y * width + i]) {
               result[y * n + x] += (0x80 >> (b & 0x7));
+            }
           }
         }
       }
@@ -113,11 +113,15 @@ export default class Image {
    * @param  {[type]}   type     [description]
    * @return {[Promise<Image>]}            [description]
    */
-  static load(url: string, type: ImageMimeType | null = null): Promise<Image> {
+  static load(url: string | Uint8Array, type: ImageMimeType | null = null): Promise<Image> {
     return new Promise((resolve, reject) => {
       getPixels(url, type ?? "", (error, pixels) => {
-        if (error) reject(error);
-        else resolve(new Image(pixels as NdArray<Uint8Array>));
+        if (error) {
+          reject(error);
+        }
+        else {
+          resolve(new Image(pixels as NdArray<Uint8Array>));
+        }
       });
     });
   }

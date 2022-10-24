@@ -20,7 +20,7 @@ device.open(function(err){
   .close();
   // .text('敏捷的棕色狐狸跳过懒狗')
   // .barcode('1234567', 'EAN8')
-  // .qrimage('https://github.com/song940/node-escpos', function(err){
+  // .qrimage('https://github.com/node-escpos/driver', function(err){
   //   this.cut();
   //   this.close();
   // });

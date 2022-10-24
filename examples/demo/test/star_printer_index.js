@@ -20,7 +20,7 @@ device.open(function(err){
   .text('敏捷的棕色狐狸跳过懒狗')
   .align("STAR_RA")
   .barcode('1234567', 'EAN8')
-  .qrimage('https://github.com/song940/node-escpos', function(err){
+  .qrimage('https://github.com/node-escpos/driver', function(err){
     this.fullCut()
     this.close();
   });

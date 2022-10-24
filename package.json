@@ -4,6 +4,7 @@
   "author": "Caspian <zhaodonghao586@outlook.com> (https://github.com/dohooo)",
   "scripts": {
     "build": "pnpm -F '@node-escpos/*' build",
+    "build:watch": "pnpm -F '@node-escpos/*' build:watch",
     "publish": "pnpm run build && changeset publish",
     "version": "changeset version"
   },
