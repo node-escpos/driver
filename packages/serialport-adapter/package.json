@@ -1,7 +1,6 @@
 {
   "name": "@node-escpos/serialport-adapter",
   "type": "module",
-  "private": true,
   "version": "0.0.0",
   "packageManager": "pnpm@7.2.1",
   "description": "",

@@ -9,4 +9,7 @@ export default defineBuildConfig({
   rollup: {
     emitCJS: true,
   },
+  externals:[
+    "@serialport/bindings-cpp"
+  ]
 });

@@ -26,8 +26,8 @@
 - ✅ [@node-escpos/server](packages/server/README.md)		
 - ✅ [@node-escpos/network-adapter](packages/network/README.md)		
 - ✅ [@node-escpos/usb-adapter](packages/usb/README.md)
+- ✅ [@node-escpos/serialport-adapter](packages/serialport/README.md)	
 - 🛠 [@node-escpos/bluetooth-adapter](packages/bluetooth/README.md)	
-- 🛠 [@node-escpos/serialport-adapter](packages/serialport/README.md)	
 
 ## Example
 

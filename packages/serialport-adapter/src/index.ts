@@ -1,5 +1,6 @@
 import { Adapter } from "@node-escpos/adapter";
 import { SerialPort } from "serialport";
+import type { PortInfo } from "@serialport/bindings-cpp";
 
 /**
  * SerialPort device
@@ -22,7 +23,7 @@ export default class Serial extends Adapter<[timeout?: number]> {
    * @returns {[Array]}
    */
   async list() {
-    const ports = await SerialPort.list();
+    const ports: PortInfo[] = await SerialPort.list();
     return ports;
   }
 
