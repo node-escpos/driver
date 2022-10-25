@@ -9,6 +9,8 @@
 
 > It is a fork of [node-escpos](https://github.com/song940/node-escpos) with some improvements. Thanks to the original [author](https://github.com/song940). And I'll bring more improvements in the future.
 
+![Hacktober Badge](https://img.shields.io/badge/hacktoberfest-2022-blueviolet)
+
 ### Improvements
 - 🛠 It is rewritten in TypeScript.
 - 📦 The new package manager is [pnpm](https://pnpm.io/).
