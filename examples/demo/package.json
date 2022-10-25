@@ -2,6 +2,7 @@
   "name": "examples-demo",
   "type": "module",
   "version": "0.0.1",
+  "private": true,
   "packageManager": "pnpm@7.2.1",
   "description": "",
   "author": "Caspian <zhaodonghao586@outlook.com> (https://github.com/dohooo)",
