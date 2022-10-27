@@ -11,7 +11,7 @@ export default class Serial extends Adapter<[timeout?: number]> {
   private device: SerialPort | null;
   constructor(port: string, options: any) {
     super();
-    this.device = new SerialPort({ path: port, ...options });
+    this.device = new SerialPort({ path: port, ...options, autoOpen: false });
     this.device.on("close", () => {
       this.emit("disconnect", this.device);
       this.device = null;
