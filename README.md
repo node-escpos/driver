@@ -21,15 +21,24 @@
 
 ### Packages
 
-- ✅ [@node-escpos/core](packages/core/README.md)		
-- ✅ [@node-escpos/adapter](packages/adapter/README.md)		
-- ✅ [@node-escpos/console](packages/console/README.md)		
-- ✅ [@node-escpos/screen](packages/screen/README.md)		
-- ✅ [@node-escpos/server](packages/server/README.md)		
-- ✅ [@node-escpos/network-adapter](packages/network/README.md)		
-- ✅ [@node-escpos/usb-adapter](packages/usb/README.md)
-- ✅ [@node-escpos/serialport-adapter](packages/serialport/README.md)	
-- 🛠 [@node-escpos/bluetooth-adapter](packages/bluetooth/README.md)	
+- ✅ [@node-escpos/core](packages/core/README.md)  [![npm](https://img.shields.io/npm/v/@node-escpos/core.svg?style=flat-square)](https://www.npmjs.com/package/@node-escpos/core) [![npm](https://img.shields.io/npm/dm/@node-escpos/core.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/core) [![npm](https://img.shields.io/npm/dw/@node-escpos/core.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/core)
+
+- ✅ [@node-escpos/adapter](packages/adapter/README.md)  [![npm](https://img.shields.io/npm/v/@node-escpos/adapter.svg?style=flat-square)](https://www.npmjs.com/package/@node-escpos/adapter) [![npm](https://img.shields.io/npm/dm/@node-escpos/adapter.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/adapter) [![npm](https://img.shields.io/npm/dw/@node-escpos/adapter.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/adapter)
+
+- ✅ [@node-escpos/console](packages/console/README.md)  [![npm](https://img.shields.io/npm/v/@node-escpos/console.svg?style=flat-square)](https://www.npmjs.com/package/@node-escpos/console) [![npm](https://img.shields.io/npm/dm/@node-escpos/console.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/console) [![npm](https://img.shields.io/npm/dw/@node-escpos/console.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/console)
+
+- ✅ [@node-escpos/screen](packages/screen/README.md)  [![npm](https://img.shields.io/npm/v/@node-escpos/screen.svg?style=flat-square)](https://www.npmjs.com/package/@node-escpos/screen) [![npm](https://img.shields.io/npm/dm/@node-escpos/screen.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/screen) [![npm](https://img.shields.io/npm/dw/@node-escpos/screen.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/screen)
+
+- ✅ [@node-escpos/server](packages/server/README.md)  [![npm](https://img.shields.io/npm/v/@node-escpos/server.svg?style=flat-square)](https://www.npmjs.com/package/@node-escpos/server) [![npm](https://img.shields.io/npm/dm/@node-escpos/server.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/server) [![npm](https://img.shields.io/npm/dw/@node-escpos/server.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/server)
+
+- ✅ [@node-escpos/network-adapter](packages/network/README.md)  [![npm](https://img.shields.io/npm/v/@node-escpos/network-adapter.svg?style=flat-square)](https://www.npmjs.com/package/@node-escpos/network-adapter) [![npm](https://img.shields.io/npm/dm/@node-escpos/network-adapter.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/network-adapter) [![npm](https://img.shields.io/npm/dw/@node-escpos/network-adapter.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/network-adapter)
+
+- ✅ [@node-escpos/usb-adapter](packages/usb/README.md)  [![npm](https://img.shields.io/npm/v/@node-escpos/usb-adapter.svg?style=flat-square)](https://www.npmjs.com/package/@node-escpos/usb-adapter) [![npm](https://img.shields.io/npm/dm/@node-escpos/usb-adapter.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/usb-adapter) [![npm](https://img.shields.io/npm/dw/@node-escpos/usb-adapter.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/usb-adapter)
+
+- ✅ [@node-escpos/serialport-adapter](packages/serialport/README.md)  [![npm](https://img.shields.io/npm/v/@node-escpos/serialport-adapter.svg?style=flat-square)](https://www.npmjs.com/package/@node-escpos/serialport-adapter) [![npm](https://img.shields.io/npm/dm/@node-escpos/serialport-adapter.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/serialport-adapter) [![npm](https://img.shields.io/npm/dw/@node-escpos/serialport-adapter.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/serialport-adapter)	
+
+- 🛠 [@node-escpos/bluetooth-adapter](packages/bluetooth/README.md)
+
 
 ## Example
 
