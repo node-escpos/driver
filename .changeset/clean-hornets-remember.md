@@ -2,4 +2,4 @@
 "@node-escpos/serialport-adapter": patch
 ---
 
-🐛 Fixed a bug that tips the port is opening.
+🐛 Fixed an error indicating that the port was open when open the device by serialport.
