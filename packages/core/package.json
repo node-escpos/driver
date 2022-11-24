@@ -1,7 +1,7 @@
 {
   "name": "@node-escpos/core",
   "type": "module",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "packageManager": "pnpm@7.2.1",
   "description": "",
   "author": "Caspian <zhaodonghao586@outlook.com> (https://github.com/dohooo)",
@@ -60,6 +60,5 @@
   "devDependencies": {
     "@types/get-pixels": "^3.3.2",
     "@types/node": "^10.0.0"
-
   }
 }
