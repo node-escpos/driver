@@ -107,6 +107,8 @@ importers:
       qr-image: '*'
     dependencies:
       '@node-escpos/adapter': link:../adapter
+      '@types/ndarray': 1.0.11
+      '@types/qr-image': 3.2.5
       eventemitter3: 4.0.7
       get-pixels: 3.3.3
       iconv-lite: 0.6.3
@@ -115,9 +117,7 @@ importers:
       qr-image: 3.2.0
     devDependencies:
       '@types/get-pixels': 3.3.2
-      '@types/ndarray': 1.0.11
       '@types/node': 10.17.60
-      '@types/qr-image': 3.2.5
 
   packages/network-adapter:
     specifiers:
@@ -1059,11 +1059,9 @@ packages:
 
   /@types/ndarray/1.0.11:
     resolution: {integrity: sha512-hOZVTN24zDHwCHaW7mF9n1vHJt83fZhNZ0YYRBwQGhA96yBWWDPTDDlqJatagHIOJB0a4xoNkNc+t/Cxd+6qUA==}
-    dev: true
 
   /@types/node/10.17.60:
     resolution: {integrity: sha512-F0KIgDJfy2nA3zMLmWGKxcH2ZVEtCZXHHdOQs2gSaQ27+lNeEfGxzkIw90aXswATX7AZ33tahPbzy6KAfUreVw==}
-    dev: true
 
   /@types/node/12.20.55:
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
@@ -1085,7 +1083,7 @@ packages:
     resolution: {integrity: sha512-2UMrFxof0hjeuvwjpkyNulibhYXgTEqtKGtVyQW2PDdI6m6CFrSn8m9RnZFDkcv687NeFzfqXSVe+LaxOZVU9g==}
     dependencies:
       '@types/node': 10.17.60
-    dev: true
+    dev: false
 
   /@types/resolve/1.17.1:
     resolution: {integrity: sha512-yy7HuzQhj0dhGpD8RLXSZWEkLsV9ibvxvi6EiJ3bkqLAO1RGo0WbkWQiwpRlSFymTJRz0d3k5LM3kkx8ArDbLw==}
