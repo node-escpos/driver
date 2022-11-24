@@ -53,12 +53,13 @@
     "mutable-buffer": "^2.0.3",
     "ndarray": "^1.0.19",
     "qr-image": "*",
+    "@types/qr-image": "^3.2.4",
+    "@types/ndarray": "^1.0.11",
     "@node-escpos/adapter": "workspace:*"
   },
   "devDependencies": {
     "@types/get-pixels": "^3.3.2",
-    "@types/ndarray": "^1.0.11",
-    "@types/node": "^10.0.0",
-    "@types/qr-image": "^3.2.4"
+    "@types/node": "^10.0.0"
+
   }
 }
