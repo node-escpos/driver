@@ -1,5 +1,5 @@
 ---
-"@node-escpos/core": 0.0.2
+"@node-escpos/core": patch
 ---
 
 Move "@types/ndarray" & "@types/qr-image" to Dependencies not Dev.
