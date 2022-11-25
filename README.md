@@ -93,7 +93,7 @@ device.open(async function(err){
     .close()
 });
 ````
-- See `./examples/demo` for more examples.
+- See [`./examples/demo/test`](https://github.com/node-escpos/driver/tree/main/examples/demo/test) for more examples.
 
 
 ## Sponsors
