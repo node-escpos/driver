@@ -527,12 +527,6 @@ export class Printer<AdapterCloseArgs extends []> extends EventEmitter {
     return this;
   }
 
-  private static isLegacyBarcodeOptions(
-    optionsOrLegacy: [BarcodeOptions] | LegacyBarcodeArguments,
-  ): optionsOrLegacy is LegacyBarcodeArguments {
-    return typeof optionsOrLegacy[0] === "object";
-  }
-
   /**
    * [barcode]
    * @param  {[type]}    code     [description]
