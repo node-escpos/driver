@@ -1,5 +1,12 @@
 # @node-escpos/core
 
+## 0.0.4
+
+### Patch Changes
+
+- ca1d497: Remove Legacy Mode. to Simple Mode
+- 439ba01: Remove Legacy Mode in Barcode Function Options. to Simple Mode
+
 ## 0.0.3
 
 ### Patch Changes
