@@ -12,9 +12,9 @@
 ![Hacktober Badge](https://img.shields.io/badge/hacktoberfest-2022-blueviolet)
 
 ### Improvements
-- 🛠 It is rewritten in TypeScript.
-- 📦 The new package manager is [pnpm](https://pnpm.io/).
-- 🟢 The new test framework is [vitest](https://vitejs.dev).
+- 🛠 TypeScript.
+- 📦 pnpm.
+- 🟢 vitest.
 - 🚀 More stable maintenance.
 - 💡 More ideas.
 - ...
