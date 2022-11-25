@@ -540,19 +540,7 @@ export class Printer<AdapterCloseArgs extends []> extends EventEmitter {
    * @param  {[type]}    options  [description]
    * @return {[Printer]} printer  [the escpos printer instance]
    */
-  barcode(code: number, type: BarcodeType, options: BarcodeOptions): this;
-  barcode(code: number, type: BarcodeType, ...optionsOrLegacy: [BarcodeOptions] | LegacyBarcodeArguments) {
-    let options: BarcodeOptions;
-    if (Printer.isLegacyBarcodeOptions(optionsOrLegacy)) {
-      options = {
-        width: optionsOrLegacy[0],
-        height: optionsOrLegacy[1],
-        position: optionsOrLegacy[2],
-        font: optionsOrLegacy[3],
-        includeParity: true,
-      };
-    }
-    else { [options] = optionsOrLegacy; }
+  barcode(code: number, type: BarcodeType, options : BarcodeOptions) {
     options.font = options.font ?? "a";
     options.position = options.position ?? "blw";
     options.includeParity = options.includeParity ?? true;
