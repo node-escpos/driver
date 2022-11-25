@@ -70,8 +70,8 @@ device.open(async function(err){
     .align("ct")
     .style("bu")
     .size(1, 1)
-    .text("The quick brown fox jumps over the lazy dog")
-    .text("敏捷的棕色狐狸跳过懒狗")
+    .text("May the gold fill your pocket")
+    .text("恭喜发财")
     .barcode(112233445566, "EAN13", { width: 50, height: 50 })
     .table(["One", "Two", "Three"])
     .tableCustom(
