@@ -3,7 +3,7 @@
 <br/>
 <br/>
 <p align="center">🖨️ ESC/POS Printer driver for Node.js.</p>
-<p align="center">[ NOT READY 🔴 ]</p>
+<p align="center">[ WIP 🔴 ]</p>
 <br/>
 <br/>
 
