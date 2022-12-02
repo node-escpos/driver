@@ -11,11 +11,34 @@
 
 ![Hacktober Badge](https://img.shields.io/badge/hacktoberfest-2022-blueviolet)
 
+---
+
+[📢 RFC] Recently I'm working on a new workflow that prints the receipt. HTML+CSS will customize the content. Theoretically, we can print anything that we want. The workflow is like this:
+1. render dom
+```tsx
+<div id="label-dom"> Label/Receipt </div>
+```
+2. capture dom
+```tsx
+const screenshort = await capture(document.getElementByID("label-dom"))
+```
+3. printing
+```tsx
+const printer = await printer.image(screenshort, "s8")
+printer.cut().close()
+```
+
+But my full-time job is very busy. So the progress is slow, And any sponsorship will encourage me to work more actively in the open-source community. 
+
+---
+
+
 ### Improvements
 - 🛠 TypeScript.
 - 📦 pnpm.
 - 🟢 vitest.
 - 🚀 More stable maintenance.
+- 🔴 Printing by HTML+CSS(WIP).
 - 💡 More ideas.
 - ...
 
