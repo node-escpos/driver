@@ -12,15 +12,15 @@
 ---
 
 [📢 RFC] Recently I'm working on a new workflow that prints the receipt. HTML+CSS will customize the content. Theoretically, we can print anything that we want. The workflow is like this:
-1. render dom
+1. 🎨 rendering 
 ```tsx
 <div id="label-dom"> Label/Receipt </div>
 ```
-2. capture dom
+2. 📸 capturing
 ```tsx
 const screenshort = await capture(document.getElementByID("label-dom"))
 ```
-3. printing
+3. 🧾 printing
 ```tsx
 const printer = await printer.image(screenshort, "s8")
 printer.cut().close()
