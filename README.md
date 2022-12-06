@@ -37,7 +37,7 @@
 
 - ✅ [@node-escpos/serialport-adapter](packages/serialport/README.md)  [![npm](https://img.shields.io/npm/v/@node-escpos/serialport-adapter.svg?style=flat-square)](https://www.npmjs.com/package/@node-escpos/serialport-adapter) [![npm](https://img.shields.io/npm/dm/@node-escpos/serialport-adapter.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/serialport-adapter) [![npm](https://img.shields.io/npm/dw/@node-escpos/serialport-adapter.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/serialport-adapter)	
 
-- 🛠 [@node-escpos/bluetooth-adapter](packages/bluetooth/README.md)
+- 🛠 [@node-escpos/bluetooth-adapter](packages/bluetooth/README.md) [`NEED HELP`](https://github.com/node-escpos/driver/issues/34)
 
 
 ## Example
@@ -49,21 +49,19 @@ import USB from "@node-escpos/usb-adapter";
 // Select the adapter based on your printer type
 const device = new USB();
 
-// encoding is optional
-const options = { encoding: "GB18030" /* default */ }
-const printer = new Printer(device, options);
-
 device.open(async function(err){
   if(err){
     // handle error
     return
   }
 
-  let printer = new Printer(device, {});
+  // encoding is optional
+  const options = { encoding: "GB18030" /* default */ }
+  let printer = new Printer(device, options);
 
   // Path to png image
-  const tux = join();
-  const image = await Image.load(tux);
+  const filePath = join("/PATH/TO/IMAGE");
+  const image = await Image.load(filePath);
 
   printer
     .font("a")
@@ -86,7 +84,10 @@ device.open(async function(err){
   // inject qrimage to printer
   printer = await printer.qrimage("https://github.com/node-escpos/driver")
   // inject image to printer
-  printer = await printer.image(image, "s8")
+  printer = await printer.image(
+    image, 
+    "s8" // changing with image
+  )
 
   printer
     .cut()
