@@ -316,3 +316,56 @@ export const COLOR = {
   REVERSE: "\x1DB1", // Reverses the colors - white text on black background
   UNREVERSE: "\x1DB0", // Default: undo the reverse - black text on white background
 };
+
+
+/**
+ * Character Code Table
+ */
+export const CHARACTER_CODE_TABLE = {
+  TM_T20: {
+    PC437: 0,       // USA: Standard Europe
+    KATAKANA: 1,    // Katakana
+    PC850: 2,       // Multilingual
+    PC860: 3,       // Portuguese
+    PC863: 4,       // Canadian-French
+    PC865: 5,       // Nordic
+    PC851: 11,      // Greek
+    PC853: 12,      // Turkish
+    PC857: 13,      // Turkish
+    PC737: 14,      // Greek
+    ISO8859_7: 15,  // ISO8859-7 (Greek)
+    WPC1252: 16,    // WPC1252
+    PC866: 17,      // Cyrillic #2
+    PC852: 18,      // Latin2
+    PC858: 19,      // Euro
+    KU42: 20,       // Thai
+    TIS11: 21,      // Thai
+    TIS18: 26,      // Thai
+    TCVN_3: 30,     // Vietnamese
+    TCVN_3_2: 31,   // Vietnamese
+    PC720: 32,      // Arabic
+    WPC775: 33,     // Baltic Rim
+    PC855: 34,      // Cyrillic
+    PC861: 35,      // Icelandic
+    PC862: 36,      // Hebrew
+    PC864: 37,      // Arabic
+    PC869: 38,      // Greek
+    ISO8859_2: 39,  // ISO8859-2 (Latin2)
+    ISO8859_15: 40, // ISO8859-15 (Latin9)
+    PC1098: 41,     // Farsi
+    PC1118: 42,     // Lithuanian
+    PC1119: 43,     // Lithuanian
+    PC1125: 44,     // Ukrainian
+    WPC1250: 45,    // Latin2
+    WPC1251: 46,    // Cyrillic
+    WPC1253: 47,    // Greek
+    WPC1254: 48,    // Turkish
+    WPC1255: 49,    // Hebrew
+    WPC1256: 50,    // Arabic
+    WPC1257: 51,    // Baltic Rim
+    WPC1258: 52,    // Vietnamese
+    KZ_1048: 53,    // KZ-1048 (Kazakhstan)
+    USER_PAGE2: 254,// User-defined page
+    USER_PAGE1: 255 // User-defined page
+  }
+}
