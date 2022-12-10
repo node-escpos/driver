@@ -212,12 +212,19 @@ export class Printer<AdapterCloseArgs extends []> extends EventEmitter {
 
   /**
    * [function Print draw line End Of Line]
-   * @param  {[String]}  character [optional]
+   * @param  {[Buffer|string]}  character [optional]
    * @return {[Printer]} printer  [the escpos printer instance]
    */
-  drawLine(character = "-") {
+  drawLine(character: Buffer | string = "-") {
+    let buffer: Buffer;
+    // Allow to print hex codes from codepage
+    if (Buffer.isBuffer(character)) {
+      buffer = character;
+    } else {
+      buffer = Buffer.from(character);
+    }
     for (let i = 0; i < this.width; i++)
-      this.buffer.write(Buffer.from(character));
+      this.buffer.write(buffer);
 
     this.newLine();
 
