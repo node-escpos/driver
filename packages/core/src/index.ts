@@ -127,6 +127,18 @@ export class Printer<AdapterCloseArgs extends []> extends EventEmitter {
     this.buffer.writeUInt8(codeTable);
     return this;
   }
+  
+  /**
+   * Set charset
+   * @param  {[Number]} charset
+   * @return {[Printer]} printer  [the escpos printer instance]
+   */
+   setCharset(charset: number = _.CHARACTER_SET.TM_T20.US) {
+    this.buffer.write(_.ESC);
+    this.buffer.write("\x52");
+    this.buffer.writeUInt8(charset);
+    return this;
+  }
 
   /**
    * Fix bottom margin

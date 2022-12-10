@@ -316,3 +316,31 @@ export const COLOR = {
   REVERSE: "\x1DB1", // Reverses the colors - white text on black background
   UNREVERSE: "\x1DB0", // Default: undo the reverse - black text on white background
 };
+
+/**
+ * List of available character sets
+ * @type {Object}
+ */
+export const CHARACTER_SET = {
+  TM_T20: {     // Epson TM-T20II
+    US: 0,      // U.S.A
+    FR: 1,      // France
+    DE: 2,      // Germany
+    EN: 3,      // England
+    DK: 4,      // Denmark
+    SE: 5,      // Sweden
+    IT: 6,      // Italy
+    ES: 7,      // Spain
+    JP: 8,      // Japan
+    NO: 9,      // Norway
+    DK_2: 10,   // Denmark II
+    ES_2: 11,   // Spain II
+    LATIN_A: 12,// Latin America
+    KR: 13,     // Korea
+    SI: 14,     // Slovenia
+    HR: 14,     // Croatia
+    CN: 15,     // China
+    VN: 16,     // Vietnam
+    ARABIA: 17  // Arabia
+  }
+}
