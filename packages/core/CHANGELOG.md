@@ -1,5 +1,13 @@
 # @node-escpos/core
 
+## 0.1.0
+
+### Minor Changes
+
+- afd41ef: Added raw buffer possibility for drawLine function
+- 1b1072d: Added function to set left margin using GS command
+- b294648: Added functionality to set charset inside the printer
+
 ## 0.0.4
 
 ### Patch Changes
