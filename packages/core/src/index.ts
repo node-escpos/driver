@@ -163,6 +163,23 @@ export class Printer<AdapterCloseArgs extends []> extends EventEmitter {
   }
 
   /**
+   * Set left margin using GS command
+   * @param  {[String]} size
+   * @return {[Printer]} printer  [the escpos printer instance]
+   */
+  setMarginLeft(size: number): Printer<AdapterCloseArgs> {
+    if (size > 65535) {
+      throw new Error("Max margin range exceeded");
+    }
+    // 1D 4C nL nH
+    this.buffer.write(_.GS);
+    this.buffer.write("\x4C");
+    const nL_nH = utils.intLowHighHex(size, 2);
+    this.buffer.write(Buffer.from(nL_nH, 'hex'));
+    return this;
+  }
+
+  /**
    * Fix right margin
    * @param  {[String]} size
    * @return {[Printer]} printer  [the escpos printer instance]
