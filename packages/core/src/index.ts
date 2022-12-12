@@ -211,10 +211,14 @@ export class Printer<AdapterCloseArgs extends []> extends EventEmitter {
 
   /**
    * [function print End Of Line]
+   * @param  {[Number]} Amount of new lines
    * @return {[Printer]} printer  [the escpos printer instance]
    */
-  newLine() {
-    return this.print(_.EOL);
+  newLine(count = 1) {
+    if (count < 0)
+      throw Error('Count cannot be less than 0');
+    if (count > 0)
+      return this.print(_.EOL.repeat(count));
   }
 
   /**
