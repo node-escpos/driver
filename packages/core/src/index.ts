@@ -215,9 +215,9 @@ export class Printer<AdapterCloseArgs extends []> extends EventEmitter {
    * @return {[Printer]} printer  [the escpos printer instance]
    */
   newLine(count = 1) {
-    if (count < 0)
-      throw Error('Count cannot be less than 0');
-    if (count > 0)
+    if (count <= 0)
+      throw Error('Count cannot be less or equal than 0');
+    else
       return this.print(_.EOL.repeat(count));
   }
 
