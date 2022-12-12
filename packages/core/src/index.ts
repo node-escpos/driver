@@ -908,7 +908,7 @@ export class Printer<AdapterCloseArgs extends []> extends EventEmitter {
    * get statuses from the printer
    * @return {Promise}
    */
-  getStatuses() {
+  getStatuses(): Promise<DeviceStatus[]> {
     return new Promise((resolve) => {
       this.adapter.read((data) => {
         const buffer: number[] = [];
