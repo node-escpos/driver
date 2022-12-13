@@ -1,5 +1,15 @@
 # @node-escpos/core
 
+## 0.2.0
+
+### Minor Changes
+
+- 6a7c49a: Enhanced newline with count parameter
+
+### Patch Changes
+
+- 7d18292: Enhanced typings for statuses
+
 ## 0.1.0
 
 ### Minor Changes
