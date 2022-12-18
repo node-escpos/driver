@@ -11,9 +11,9 @@
   "homepage": "https://github.com/dohooo/[pkg-name]#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dohooo/[pkg-name].git"
+    "url": "git+https://github.com/node-escpos/driver.git"
   },
-  "bugs": "https://github.com/dohooo/[pkg-name]/issues",
+  "bugs": "https://github.com/node-escpos/driver/issues",
   "keywords": [],
   "sideEffects": false,
   "exports": {

@@ -1,5 +1,5 @@
 ---
-"@node-escpos/bluetooth-adapter": patch
+"@node-escpos/bluetooth-adapter": minor
 ---
 
 Implemented the bluetooth adapter.
