@@ -49,6 +49,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@abandonware/noble": "^1.9.2-17",
     "@node-escpos/adapter": "workspace:*",
     "eventemitter3": "^4.0.7",
     "mutable-buffer": "^2.0.3",
