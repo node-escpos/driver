@@ -1,7 +1,7 @@
 {
   "name": "@node-escpos/bluetooth-adapter",
   "type": "module",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "packageManager": "pnpm@7.2.1",
   "description": "",
   "author": "Caspian <zhaodonghao586@outlook.com> (https://github.com/dohooo)",
@@ -41,7 +41,6 @@
     "build:watch": "npx nodemon --exec 'pnpm run build' -w src -e 'ts'",
     "dev": "unbuild --stub",
     "lint": "eslint .",
-    
     "release": "bumpp && npm publish",
     "start": "esno src/index.ts",
     "test": "vitest",
