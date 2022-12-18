@@ -1,4 +1,4 @@
-# @node-escpos/core
+# @node-escpos/network-adapter
 
 ## Sponsors
 

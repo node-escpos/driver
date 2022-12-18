@@ -1,4 +1,4 @@
-# @node-escpos/core
+# @node-escpos/bluetooth-adapter
 
 ## Sponsors
 
