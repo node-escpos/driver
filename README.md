@@ -9,6 +9,10 @@
 
 ---
 
+
+https://user-images.githubusercontent.com/32405058/208310580-25466637-2b3e-4928-b4e6-6ceb07735136.mp4
+
+
 [📢 RFC] Recently I'm working on a new workflow that prints the receipt. HTML+CSS will customize the content. Theoretically, we can print anything that we want. The workflow is like this:
 1. 🎨 rendering 
 ```tsx
