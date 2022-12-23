@@ -133,7 +133,7 @@ export class OfflineCauseStatus extends DeviceStatus {
     const result = super.toBaseJSON("OfflineCauseStatus");
     for (let i = 0; i < 8; i++) {
       let label = "";
-      let status = Status.Error;
+      let status = Status.Ok;
       switch (i) {
         case 2:
           if (this.bitsAsc[i] === 1) {
