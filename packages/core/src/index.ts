@@ -913,11 +913,11 @@ export class Printer<AdapterCloseArgs extends []> extends EventEmitter {
    * @return {Promise}
    */
   getStatuses(): Promise<DeviceStatus[]> {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       this.adapter.read((data) => {
         const buffer: number[] = [];
         for (let i = 0; i < data.byteLength; i++) buffer.push(data.readInt8(i));
-        if (buffer.length < 4) return;
+        if (buffer.length < 4) return reject();
 
         const statuses = [
           new PrinterStatus(buffer[0]),
