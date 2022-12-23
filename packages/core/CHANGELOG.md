@@ -1,5 +1,12 @@
 # @node-escpos/core
 
+## 0.3.0
+
+### Minor Changes
+
+- 21a9560: getStatuses does not reject when data is not returned
+- 8f4c52f: OfflineCauseStatus JSON always shows errors
+
 ## 0.2.0
 
 ### Minor Changes
