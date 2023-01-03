@@ -1,7 +1,7 @@
 import os from "os";
 
 import { Adapter } from "@node-escpos/adapter";
-import type { Interface, InEndpoint, OutEndpoint, LibUSBException } from "usb";
+import { Interface, InEndpoint, OutEndpoint, LibUSBException, findBySerialNumber } from "usb";
 import { usb, getDeviceList, findByIds } from "usb";
 
 /**
@@ -54,26 +54,42 @@ export default class USBAdapter extends Adapter<[]> {
     });
   }
 
-  static findPrinter() {
-    return getDeviceList().filter((device) => {
-      try {
-        return device.configDescriptor?.interfaces.filter((iface) => {
-          return iface.filter((conf) => {
-            return conf.bInterfaceClass === IFACE_CLASS.PRINTER;
-          }).length;
+  static isPrinter(device: usb.Device): boolean {
+    try {
+      const length = device.configDescriptor?.interfaces.filter((iface) => {
+        return iface.filter((conf) => {
+          return conf.bInterfaceClass === IFACE_CLASS.PRINTER;
         }).length;
-      }
-      catch (e) {
-        // console.warn(e)
-        return false;
-      }
-    });
+      }).length;
+      return (length !== undefined && length > 0);
+    }
+    catch (e) {
+      // console.warn(e)
+      return false;
+    }
+  }
+
+  static findPrinter() {
+    return getDeviceList().filter((device) => USBAdapter.isPrinter(device));
   }
 
   static getDevice(vid: number, pid: number) {
     return new Promise((resolve, reject) => {
       try {
         const device = findByIds(vid, pid);
+        device?.open();
+        resolve(device);
+      }
+      catch (err) {
+        reject(err);
+      }
+    });
+  }
+
+  static getDeviceBySerial(serialNumber: string) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const device = await findBySerialNumber(serialNumber);
         device?.open();
         resolve(device);
       }
