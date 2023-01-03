@@ -34,6 +34,7 @@ export abstract class DeviceStatus {
   byte;
   bits: (0 | 1)[] = [];
   bitsAsc: (0 | 1)[] = [];
+
   public constructor(byte: number) {
     this.byte = byte;
     for (let j = 7; j >= 0; j--) {
@@ -45,7 +46,7 @@ export abstract class DeviceStatus {
     this.bitsAsc.reverse();
   }
 
-  private getBits() {
+  private getBits(): string {
     return this.bits.join("");
   }
 
@@ -57,6 +58,8 @@ export abstract class DeviceStatus {
       statuses: [],
     };
   }
+
+  abstract toJSON(): StatusJSON<string>;
 }
 
 export class PrinterStatus extends DeviceStatus {
@@ -64,7 +67,7 @@ export class PrinterStatus extends DeviceStatus {
     return [_.DLE, _.EOT, String.fromCharCode(1)];
   }
 
-  toJSON() {
+  toJSON(): StatusJSON<"PrinterStatus"> {
     const result = super.toBaseJSON("PrinterStatus");
     for (let i = 0; i < 8; i++) {
       let label = "";
@@ -126,11 +129,11 @@ export class OfflineCauseStatus extends DeviceStatus {
     return [_.DLE, _.EOT, String.fromCharCode(2)];
   }
 
-  toJSON() {
+  toJSON(): StatusJSON<"OfflineCauseStatus"> {
     const result = super.toBaseJSON("OfflineCauseStatus");
     for (let i = 0; i < 8; i++) {
       let label = "";
-      let status = Status.Error;
+      let status = Status.Ok;
       switch (i) {
         case 2:
           if (this.bitsAsc[i] === 1) {
@@ -190,7 +193,7 @@ export class ErrorCauseStatus extends DeviceStatus {
     return [_.DLE, _.EOT, String.fromCharCode(3)];
   }
 
-  toJSON() {
+  toJSON(): StatusJSON<"ErrorCauseStatus"> {
     const result = super.toBaseJSON("ErrorCauseStatus");
     for (let i = 0; i < 8; i++) {
       let label = "";
@@ -254,7 +257,7 @@ export class RollPaperSensorStatus extends DeviceStatus {
     return [_.DLE, _.EOT, String.fromCharCode(4)];
   }
 
-  toJSON() {
+  toJSON(): StatusJSON<"RollPaperSensorStatus"> {
     const result = super.toBaseJSON("RollPaperSensorStatus");
 
     for (let i = 0; i <= 1; i++) {

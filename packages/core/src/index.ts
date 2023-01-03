@@ -127,6 +127,18 @@ export class Printer<AdapterCloseArgs extends []> extends EventEmitter {
     this.buffer.writeUInt8(codeTable);
     return this;
   }
+  
+  /**
+   * Set charset
+   * @param  {[Number]} charset
+   * @return {[Printer]} printer  [the escpos printer instance]
+   */
+   setCharset(charset: number = _.CHARACTER_SET.TM_T20.US) {
+    this.buffer.write(_.ESC);
+    this.buffer.write("\x52");
+    this.buffer.writeUInt8(charset);
+    return this;
+  }
 
   /**
    * Fix bottom margin
@@ -147,6 +159,23 @@ export class Printer<AdapterCloseArgs extends []> extends EventEmitter {
   marginLeft(size: number) {
     this.buffer.write(_.MARGINS.LEFT);
     this.buffer.writeUInt8(size);
+    return this;
+  }
+
+  /**
+   * Set left margin using GS command
+   * @param  {[String]} size
+   * @return {[Printer]} printer  [the escpos printer instance]
+   */
+  setMarginLeft(size: number): Printer<AdapterCloseArgs> {
+    if (size > 65535) {
+      throw new Error("Max margin range exceeded");
+    }
+    // 1D 4C nL nH
+    this.buffer.write(_.GS);
+    this.buffer.write("\x4C");
+    const nL_nH = utils.intLowHighHex(size, 2);
+    this.buffer.write(Buffer.from(nL_nH, 'hex'));
     return this;
   }
 
@@ -182,10 +211,14 @@ export class Printer<AdapterCloseArgs extends []> extends EventEmitter {
 
   /**
    * [function print End Of Line]
+   * @param  {[Number]} Amount of new lines
    * @return {[Printer]} printer  [the escpos printer instance]
    */
-  newLine() {
-    return this.print(_.EOL);
+  newLine(count = 1) {
+    if (count <= 0)
+      throw Error('Count cannot be less or equal than 0');
+    else
+      return this.print(_.EOL.repeat(count));
   }
 
   /**
@@ -200,12 +233,19 @@ export class Printer<AdapterCloseArgs extends []> extends EventEmitter {
 
   /**
    * [function Print draw line End Of Line]
-   * @param  {[String]}  character [optional]
+   * @param  {[Buffer|string]}  character [optional]
    * @return {[Printer]} printer  [the escpos printer instance]
    */
-  drawLine(character = "-") {
+  drawLine(character: Buffer | string = "-") {
+    let buffer: Buffer;
+    // Allow to print hex codes from codepage
+    if (Buffer.isBuffer(character)) {
+      buffer = character;
+    } else {
+      buffer = Buffer.from(character);
+    }
     for (let i = 0; i < this.width; i++)
-      this.buffer.write(Buffer.from(character));
+      this.buffer.write(buffer);
 
     this.newLine();
 
@@ -872,12 +912,12 @@ export class Printer<AdapterCloseArgs extends []> extends EventEmitter {
    * get statuses from the printer
    * @return {Promise}
    */
-  getStatuses() {
-    return new Promise((resolve) => {
+  getStatuses(): Promise<DeviceStatus[]> {
+    return new Promise((resolve, reject) => {
       this.adapter.read((data) => {
         const buffer: number[] = [];
         for (let i = 0; i < data.byteLength; i++) buffer.push(data.readInt8(i));
-        if (buffer.length < 4) return;
+        if (buffer.length < 4) return reject();
 
         const statuses = [
           new PrinterStatus(buffer[0]),

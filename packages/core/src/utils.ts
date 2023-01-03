@@ -40,3 +40,27 @@ export type AnyCase<T extends string> = Uppercase<T> | Lowercase<T>;
 export function isKey<T extends {} | []>(key: string | number | symbol, of: T): key is keyof T {
   return key in of;
 }
+
+/**
+ * Function to encode a number as hex in format low to high values
+ * @param {[Number]} input 
+ * @param {[Number]} length of hex couples (0x01 0x00 ...)
+ * @returns {[string]} hex value low-high order
+ */
+export function intLowHighHex(input: number, length: number = 1): string {
+  if (input < 0 || input % 1 !== 0) {
+    throw new Error('Input must be greater or equal than 0');
+  } else if (length < 0) {
+    throw new Error('Length muste be greater than 0');
+  }
+  let ret = ''
+  for (let i = 0; i < length; i++) {
+    let value = (input % 256).toString(16).toUpperCase();
+    if (value === '0' || value.length % 2 !== 0) {
+      value = `0${value}`;
+    }
+    ret += value;
+    input = Math.floor(input / 256);
+  }
+  return ret;
+}

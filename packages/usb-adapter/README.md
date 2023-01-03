@@ -1,4 +1,4 @@
-# @node-escpos/core
+# @node-escpos/usb-adapter
 
 ## Sponsors
 

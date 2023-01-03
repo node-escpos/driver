@@ -3,13 +3,15 @@
 <br/>
 <br/>
 <p align="center">🖨️ ESC/POS Printer driver for Node.js.</p>
-<p align="center">[ WIP 🔴 ]</p>
-<br/>
 <br/>
 
 ![Hacktober Badge](https://img.shields.io/badge/hacktoberfest-2022-blueviolet)
 
 ---
+
+
+https://user-images.githubusercontent.com/32405058/208310580-25466637-2b3e-4928-b4e6-6ceb07735136.mp4
+
 
 [📢 RFC] Recently I'm working on a new workflow that prints the receipt. HTML+CSS will customize the content. Theoretically, we can print anything that we want. The workflow is like this:
 1. 🎨 rendering 
@@ -42,23 +44,23 @@ But my full-time job is very busy. So the progress is slow, And any sponsorship 
 
 ### Packages
 
-- ✅ [@node-escpos/core](packages/core/README.md)  [![npm](https://img.shields.io/npm/v/@node-escpos/core.svg?style=flat-square)](https://www.npmjs.com/package/@node-escpos/core) [![npm](https://img.shields.io/npm/dm/@node-escpos/core.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/core) [![npm](https://img.shields.io/npm/dw/@node-escpos/core.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/core)
+- [@node-escpos/core](packages/core/README.md)  [![npm](https://img.shields.io/npm/v/@node-escpos/core.svg?style=flat-square)](https://www.npmjs.com/package/@node-escpos/core) [![npm](https://img.shields.io/npm/dm/@node-escpos/core.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/core) [![npm](https://img.shields.io/npm/dw/@node-escpos/core.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/core)
 
-- ✅ [@node-escpos/adapter](packages/adapter/README.md)  [![npm](https://img.shields.io/npm/v/@node-escpos/adapter.svg?style=flat-square)](https://www.npmjs.com/package/@node-escpos/adapter) [![npm](https://img.shields.io/npm/dm/@node-escpos/adapter.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/adapter) [![npm](https://img.shields.io/npm/dw/@node-escpos/adapter.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/adapter)
+- [@node-escpos/adapter](packages/adapter/README.md)  [![npm](https://img.shields.io/npm/v/@node-escpos/adapter.svg?style=flat-square)](https://www.npmjs.com/package/@node-escpos/adapter) [![npm](https://img.shields.io/npm/dm/@node-escpos/adapter.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/adapter) [![npm](https://img.shields.io/npm/dw/@node-escpos/adapter.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/adapter)
 
-- ✅ [@node-escpos/console](packages/console/README.md)  [![npm](https://img.shields.io/npm/v/@node-escpos/console.svg?style=flat-square)](https://www.npmjs.com/package/@node-escpos/console) [![npm](https://img.shields.io/npm/dm/@node-escpos/console.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/console) [![npm](https://img.shields.io/npm/dw/@node-escpos/console.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/console)
+- [@node-escpos/console](packages/console/README.md)  [![npm](https://img.shields.io/npm/v/@node-escpos/console.svg?style=flat-square)](https://www.npmjs.com/package/@node-escpos/console) [![npm](https://img.shields.io/npm/dm/@node-escpos/console.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/console) [![npm](https://img.shields.io/npm/dw/@node-escpos/console.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/console)
 
-- ✅ [@node-escpos/screen](packages/screen/README.md)  [![npm](https://img.shields.io/npm/v/@node-escpos/screen.svg?style=flat-square)](https://www.npmjs.com/package/@node-escpos/screen) [![npm](https://img.shields.io/npm/dm/@node-escpos/screen.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/screen) [![npm](https://img.shields.io/npm/dw/@node-escpos/screen.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/screen)
+- [@node-escpos/screen](packages/screen/README.md)  [![npm](https://img.shields.io/npm/v/@node-escpos/screen.svg?style=flat-square)](https://www.npmjs.com/package/@node-escpos/screen) [![npm](https://img.shields.io/npm/dm/@node-escpos/screen.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/screen) [![npm](https://img.shields.io/npm/dw/@node-escpos/screen.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/screen)
 
-- ✅ [@node-escpos/server](packages/server/README.md)  [![npm](https://img.shields.io/npm/v/@node-escpos/server.svg?style=flat-square)](https://www.npmjs.com/package/@node-escpos/server) [![npm](https://img.shields.io/npm/dm/@node-escpos/server.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/server) [![npm](https://img.shields.io/npm/dw/@node-escpos/server.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/server)
+- [@node-escpos/server](packages/server/README.md)  [![npm](https://img.shields.io/npm/v/@node-escpos/server.svg?style=flat-square)](https://www.npmjs.com/package/@node-escpos/server) [![npm](https://img.shields.io/npm/dm/@node-escpos/server.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/server) [![npm](https://img.shields.io/npm/dw/@node-escpos/server.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/server)
 
-- ✅ [@node-escpos/network-adapter](packages/network-adapter/README.md)  [![npm](https://img.shields.io/npm/v/@node-escpos/network-adapter.svg?style=flat-square)](https://www.npmjs.com/package/@node-escpos/network-adapter) [![npm](https://img.shields.io/npm/dm/@node-escpos/network-adapter.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/network-adapter) [![npm](https://img.shields.io/npm/dw/@node-escpos/network-adapter.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/network-adapter)
+- [@node-escpos/network-adapter](packages/network-adapter/README.md)  [![npm](https://img.shields.io/npm/v/@node-escpos/network-adapter.svg?style=flat-square)](https://www.npmjs.com/package/@node-escpos/network-adapter) [![npm](https://img.shields.io/npm/dm/@node-escpos/network-adapter.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/network-adapter) [![npm](https://img.shields.io/npm/dw/@node-escpos/network-adapter.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/network-adapter)
 
-- ✅ [@node-escpos/usb-adapter](packages/usb-adapter/README.md)  [![npm](https://img.shields.io/npm/v/@node-escpos/usb-adapter.svg?style=flat-square)](https://www.npmjs.com/package/@node-escpos/usb-adapter) [![npm](https://img.shields.io/npm/dm/@node-escpos/usb-adapter.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/usb-adapter) [![npm](https://img.shields.io/npm/dw/@node-escpos/usb-adapter.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/usb-adapter)
+- [@node-escpos/usb-adapter](packages/usb-adapter/README.md)  [![npm](https://img.shields.io/npm/v/@node-escpos/usb-adapter.svg?style=flat-square)](https://www.npmjs.com/package/@node-escpos/usb-adapter) [![npm](https://img.shields.io/npm/dm/@node-escpos/usb-adapter.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/usb-adapter) [![npm](https://img.shields.io/npm/dw/@node-escpos/usb-adapter.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/usb-adapter)
 
-- ✅ [@node-escpos/serialport-adapter](packages/serialport-adapter/README.md)  [![npm](https://img.shields.io/npm/v/@node-escpos/serialport-adapter.svg?style=flat-square)](https://www.npmjs.com/package/@node-escpos/serialport-adapter) [![npm](https://img.shields.io/npm/dm/@node-escpos/serialport-adapter.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/serialport-adapter) [![npm](https://img.shields.io/npm/dw/@node-escpos/serialport-adapter.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/serialport-adapter)	
+- [@node-escpos/serialport-adapter](packages/serialport-adapter/README.md)  [![npm](https://img.shields.io/npm/v/@node-escpos/serialport-adapter.svg?style=flat-square)](https://www.npmjs.com/package/@node-escpos/serialport-adapter) [![npm](https://img.shields.io/npm/dm/@node-escpos/serialport-adapter.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/serialport-adapter) [![npm](https://img.shields.io/npm/dw/@node-escpos/serialport-adapter.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/serialport-adapter)	
 
-- 🛠 [@node-escpos/bluetooth-adapter](packages/bluetooth-adapter/README.md) [`NEED HELP`](https://github.com/node-escpos/driver/issues/34)
+- [@node-escpos/bluetooth-adapter](packages/bluetooth-adapter/README.md)  [![npm](https://img.shields.io/npm/v/@node-escpos/bluetooth-adapter.svg?style=flat-square)](https://www.npmjs.com/package/@node-escpos/bluetooth-adapter) [![npm](https://img.shields.io/npm/dm/@node-escpos/bluetooth-adapter.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/bluetooth-adapter) [![npm](https://img.shields.io/npm/dw/@node-escpos/bluetooth-adapter.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/@node-escpos/bluetooth-adapter)	
 
 
 ## Example

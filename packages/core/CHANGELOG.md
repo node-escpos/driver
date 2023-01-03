@@ -1,5 +1,30 @@
 # @node-escpos/core
 
+## 0.3.0
+
+### Minor Changes
+
+- 21a9560: getStatuses does not reject when data is not returned
+- 8f4c52f: OfflineCauseStatus JSON always shows errors
+
+## 0.2.0
+
+### Minor Changes
+
+- 6a7c49a: Enhanced newline with count parameter
+
+### Patch Changes
+
+- 7d18292: Enhanced typings for statuses
+
+## 0.1.0
+
+### Minor Changes
+
+- afd41ef: Added raw buffer possibility for drawLine function
+- 1b1072d: Added function to set left margin using GS command
+- b294648: Added functionality to set charset inside the printer
+
 ## 0.0.4
 
 ### Patch Changes

@@ -1,19 +1,18 @@
 {
   "name": "@node-escpos/bluetooth-adapter",
   "type": "module",
-  "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "packageManager": "pnpm@7.2.1",
   "description": "",
   "author": "Caspian <zhaodonghao586@outlook.com> (https://github.com/dohooo)",
   "license": "MIT",
   "funding": "https://github.com/sponsors/dohooo",
-  "homepage": "https://github.com/dohooo/[pkg-name]#readme",
+  "homepage": "https://github.com/node-escpos/driver/tree/main/packages/bluetooth-adapter",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dohooo/[pkg-name].git"
+    "url": "git+https://github.com/node-escpos/driver.git"
   },
-  "bugs": "https://github.com/dohooo/[pkg-name]/issues",
+  "bugs": "https://github.com/node-escpos/driver/issues",
   "keywords": [],
   "sideEffects": false,
   "exports": {
@@ -42,13 +41,13 @@
     "build:watch": "npx nodemon --exec 'pnpm run build' -w src -e 'ts'",
     "dev": "unbuild --stub",
     "lint": "eslint .",
-    
     "release": "bumpp && npm publish",
     "start": "esno src/index.ts",
     "test": "vitest",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@abandonware/noble": "^1.9.2-17",
     "@node-escpos/adapter": "workspace:*",
     "eventemitter3": "^4.0.7",
     "mutable-buffer": "^2.0.3",

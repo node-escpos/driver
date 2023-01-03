@@ -7,12 +7,12 @@
   "author": "Caspian <zhaodonghao586@outlook.com> (https://github.com/dohooo)",
   "license": "MIT",
   "funding": "https://github.com/sponsors/dohooo",
-  "homepage": "https://github.com/dohooo/[pkg-name]#readme",
+  "homepage": "https://github.com/node-escpos/driver/tree/main/packages/adapter",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dohooo/[pkg-name].git"
+    "url": "git+https://github.com/node-escpos/driver.git"
   },
-  "bugs": "https://github.com/dohooo/[pkg-name]/issues",
+  "bugs": "https://github.com/node-escpos/driver/issues",
   "keywords": [],
   "sideEffects": false,
   "exports": {
