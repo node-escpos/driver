@@ -318,6 +318,12 @@ export const COLOR = {
 };
 
 /**
+ * Receipt Enhancements as defining a static bottom or top logo
+ * @type {string}
+ */
+export const RECEIPT_ENHANCEMENT = "\x1C\x28\x45";
+
+/**
  * List of available character sets
  * @type {Object}
  */
