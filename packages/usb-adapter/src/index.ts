@@ -1,7 +1,8 @@
 import os from "os";
 
 import { Adapter } from "@node-escpos/adapter";
-import { Interface, InEndpoint, OutEndpoint, LibUSBException, findBySerialNumber } from "usb";
+import type { Interface, InEndpoint, OutEndpoint, LibUSBException } from "usb";
+import { findBySerialNumber } from "usb";
 import { usb, getDeviceList, findByIds } from "usb";
 
 /**
