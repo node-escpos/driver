@@ -23,8 +23,9 @@ export default class USBAdapter extends Adapter<[]> {
 
   constructor(vid?: number | usb.Device, pid?: number) {
     super();
-    // eslint-disable-next-line @typescript-eslint/no-this-alias
-    const self = this;
+    // Bind class reference this to the method
+    this.detachDevice = this.detachDevice.bind(this);
+    
     if (vid && pid && typeof vid === "number") {
       this.device = findByIds(vid, pid) || null;
     }
@@ -45,13 +46,15 @@ export default class USBAdapter extends Adapter<[]> {
     if (!this.device)
       throw new Error("Can not find printer");
 
-    usb.on("detach", (device) => {
-      if (device === self.device) {
-        self.emit("detach", device);
-        self.emit("disconnect", device);
-        self.device = null;
-      }
-    });
+    usb.on("detach", this.detachDevice);
+  }
+
+  private detachDevice(device: usb.Device) {
+    if (device === this.device) {
+      this.emit("detach", device);
+      this.emit("disconnect", device);
+      this.device = null;
+    }
   }
 
   static findPrinter() {
@@ -151,7 +154,7 @@ export default class USBAdapter extends Adapter<[]> {
     if (!this.device) callback?.(new Error("Device not found"));
     try {
       this.device?.close();
-      usb.removeAllListeners("detach");
+      usb.removeListener('detach', this.detachDevice);
       callback && callback(null);
       this.emit("close", this.device);
     }
