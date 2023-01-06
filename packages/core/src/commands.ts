@@ -147,8 +147,8 @@ export const TEXT_FORMAT = {
   TXT_UNDERL2_ON: "\x1B\x2D\x02", // Underline font 2-dot ON
   TXT_BOLD_OFF: "\x1B\x45\x00", // Bold font OFF
   TXT_BOLD_ON: "\x1B\x45\x01", // Bold font ON
-  TXT_ITALIC_OFF: "\x1B\x35", // Italic font ON
-  TXT_ITALIC_ON: "\x1B\x34", // Italic font ON
+  TXT_ITALIC_OFF: "\x1B\x34\x00", // Italic font OFF
+  TXT_ITALIC_ON: "\x1B\x34\x01", // Italic font ON
 
   TXT_FONT_A: "\x1B\x4D\x00", // Font type A
   TXT_FONT_B: "\x1B\x4D\x01", // Font type B
