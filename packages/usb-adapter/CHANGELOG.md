@@ -1,5 +1,11 @@
 # @node-escpos/usb-adapter
 
+## 0.0.3
+
+### Patch Changes
+
+- b0bc617: Solved removing all usb detach listeners
+
 ## 0.0.2
 
 ### Patch Changes

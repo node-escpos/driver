@@ -1,5 +1,16 @@
 # @node-escpos/core
 
+## 0.4.0
+
+### Minor Changes
+
+- 7e181a4: Added Character Codepage Table for TM20 and similar models
+- 7d6c597: Added receipt enhancement functions to set top and bottom logo from NV memory
+
+### Patch Changes
+
+- ecef4e7: Fixes italic mode
+
 ## 0.3.0
 
 ### Minor Changes
