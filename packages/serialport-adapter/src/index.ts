@@ -19,10 +19,10 @@ export default class Serial extends Adapter<[timeout?: number]> {
   }
 
   /**
-   * List Printers
+   * List Serial Devices
    * @returns {[Array]}
    */
-  async list() {
+  static async list() {
     const ports: PortInfo[] = await SerialPort.list();
     return ports;
   }
