@@ -66,10 +66,12 @@ But my full-time job is very busy. So the progress is slow, And any sponsorship 
 ## Example
 
 ````javascript
-import { Printer } from "@node-escpos/core";
+import { Printer, Image } from "@node-escpos/core";
 // install escpos-usb adapter module manually
 import USB from "@node-escpos/usb-adapter";
 // Select the adapter based on your printer type
+import { join } from "path";
+
 const device = new USB();
 
 device.open(async function(err){
