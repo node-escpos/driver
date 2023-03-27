@@ -57,6 +57,10 @@ export default class USBAdapter extends Adapter<[]> {
     }
   }
 
+  static on(event: "attach" | "detach", listener: (device: usb.Device) => void) {
+    usb.on(event, listener);
+  }
+
   static findPrinter() {
     return getDeviceList().filter((device) => {
       try {
