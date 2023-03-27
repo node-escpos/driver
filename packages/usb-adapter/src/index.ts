@@ -58,6 +58,10 @@ export default class USBAdapter extends Adapter<[]> {
     }
   }
 
+  static on(event: "attach" | "detach", listener: (device: usb.Device) => void) {
+    usb.on(event, listener);
+  }
+
   static isPrinter(device: usb.Device): boolean {
     try {
       const length = device.configDescriptor?.interfaces.filter((iface) => {
