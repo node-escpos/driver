@@ -1,5 +1,11 @@
 # @node-escpos/usb-adapter
 
+## 0.2.0
+
+### Minor Changes
+
+- d68acb4: expose listener for attach/detach events
+
 ## 0.1.0
 
 ### Minor Changes
