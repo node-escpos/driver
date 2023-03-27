@@ -1,5 +1,11 @@
 # @node-escpos/usb-adapter
 
+## 0.2.1
+
+### Patch Changes
+
+- 2aa8939: 🚀
+
 ## 0.2.0
 
 ### Minor Changes
