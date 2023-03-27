@@ -1,5 +1,11 @@
 # @node-escpos/serialport-adapter
 
+## 1.0.0
+
+### Major Changes
+
+- 5c6f405: Changed Serial.list() to be static as it is not bind to the object
+
 ## 0.0.3
 
 ### Patch Changes
