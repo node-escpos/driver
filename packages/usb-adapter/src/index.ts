@@ -1,9 +1,11 @@
 import os from "os";
 
 import { Adapter } from "@node-escpos/adapter";
-import type { Interface, InEndpoint, OutEndpoint, LibUSBException } from "usb";
+import type { Interface, InEndpoint, OutEndpoint, LibUSBException, Device as _Device } from "usb";
 import { findBySerialNumber } from "usb";
 import { usb, getDeviceList, findByIds } from "usb";
+
+const { Device, on, removeListener } =  usb;
 
 /**
  * [USB Class Codes ]
@@ -17,12 +19,14 @@ const IFACE_CLASS = {
   HUB: 0x09,
 };
 
+export type TDevice = _Device;
+
 export default class USBAdapter extends Adapter<[]> {
-  device: usb.Device | null = null;
+  device: TDevice | null = null;
   endpoint: OutEndpoint | null = null;
   deviceToPcEndpoint: InEndpoint | null = null;
 
-  constructor(vid?: number | usb.Device, pid?: number) {
+  constructor(vid?: number | TDevice, pid?: number) {
     super();
     // Bind class reference this to the method
     this.detachDevice = this.detachDevice.bind(this);
@@ -30,7 +34,7 @@ export default class USBAdapter extends Adapter<[]> {
     if (vid && pid && typeof vid === "number") {
       this.device = findByIds(vid, pid) || null;
     }
-    else if (vid && vid instanceof usb.Device) {
+    else if (vid && vid instanceof Device) {
       // Set specific USB device from devices array as coming from USB.findPrinter() function.
       // for example
       // let devices = escpos.USB.findPrinter();
@@ -47,10 +51,10 @@ export default class USBAdapter extends Adapter<[]> {
     if (!this.device)
       throw new Error("Can not find printer");
 
-    usb.on("detach", this.detachDevice);
+    on("detach", this.detachDevice);
   }
 
-  private detachDevice(device: usb.Device) {
+  private detachDevice(device: TDevice) {
     if (device === this.device) {
       this.emit("detach", device);
       this.emit("disconnect", device);
@@ -58,11 +62,11 @@ export default class USBAdapter extends Adapter<[]> {
     }
   }
 
-  static on(event: "attach" | "detach", listener: (device: usb.Device) => void) {
-    usb.on(event, listener);
+  static on(event: "attach" | "detach", listener: (device: TDevice) => void) {
+    on(event, listener);
   }
 
-  static isPrinter(device: usb.Device): boolean {
+  static isPrinter(device: TDevice): boolean {
     try {
       const length = device.configDescriptor?.interfaces.filter((iface) => {
         return iface.filter((conf) => {
@@ -175,7 +179,7 @@ export default class USBAdapter extends Adapter<[]> {
     if (!this.device) callback?.(new Error("Device not found"));
     try {
       this.device?.close();
-      usb.removeListener('detach', this.detachDevice);
+      removeListener('detach', this.detachDevice);
       callback && callback(null);
       this.emit("close", this.device);
     }
