@@ -5,8 +5,6 @@ import type { Interface, InEndpoint, OutEndpoint, LibUSBException, Device as _De
 import { findBySerialNumber } from "usb";
 import { usb, getDeviceList, findByIds } from "usb";
 
-const { Device, on, removeListener } =  usb;
-
 /**
  * [USB Class Codes ]
  * @type {Object}
@@ -34,7 +32,7 @@ export default class USBAdapter extends Adapter<[]> {
     if (vid && pid && typeof vid === "number") {
       this.device = findByIds(vid, pid) || null;
     }
-    else if (vid && vid instanceof Device) {
+    else if (vid && vid instanceof usb.Device) {
       // Set specific USB device from devices array as coming from USB.findPrinter() function.
       // for example
       // let devices = escpos.USB.findPrinter();
@@ -51,7 +49,7 @@ export default class USBAdapter extends Adapter<[]> {
     if (!this.device)
       throw new Error("Can not find printer");
 
-    on("detach", this.detachDevice);
+    usb.on("detach", this.detachDevice);
   }
 
   private detachDevice(device: TDevice) {
@@ -63,7 +61,7 @@ export default class USBAdapter extends Adapter<[]> {
   }
 
   static on(event: "attach" | "detach", listener: (device: TDevice) => void) {
-    on(event, listener);
+    usb.on(event, listener);
   }
 
   static isPrinter(device: TDevice): boolean {
@@ -179,7 +177,7 @@ export default class USBAdapter extends Adapter<[]> {
     if (!this.device) callback?.(new Error("Device not found"));
     try {
       this.device?.close();
-      removeListener('detach', this.detachDevice);
+      usb.removeListener('detach', this.detachDevice);
       callback && callback(null);
       this.emit("close", this.device);
     }
