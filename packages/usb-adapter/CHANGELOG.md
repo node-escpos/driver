@@ -1,5 +1,11 @@
 # @node-escpos/usb-adapter
 
+## 0.3.0
+
+### Minor Changes
+
+- b2fdbeb: 🚀 expose Device types
+
 ## 0.2.1
 
 ### Patch Changes
