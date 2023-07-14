@@ -47,10 +47,12 @@ export default class USBAdapter extends Adapter<[]> {
         this.device = devices[0];
     }
     if (!this.device)
+    // throw new Error("Can not find printer") will cause process exit due to uncaught exception.
     // console if device not found 
-      console.error("Printer not found maybe not connected or not installed yet !");
+    console.error("Printer not found maybe not connected or not installed yet !");
+    return
+       
       usb.on("detach", this.detachDevice);
-    return 
   }
 
   private detachDevice(device: TDevice) {
