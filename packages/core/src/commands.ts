@@ -88,9 +88,9 @@ export const MARGINS = {
   PAPER_PART_CUT: "\x1D\x56\x01", // Partial cut paper
   PAPER_CUT_A: "\x1D\x56\x41", // Partial cut paper
   PAPER_CUT_B: "\x1D\x56\x42", // Partial cut paper
+  PAPER_CUT_C: "\x1D\x56\x31", //   Partial cut paper
   STAR_FULL_CUT: "\x1B\x64\x02", // STAR printer - Full cut
-  AXIS_PARTIAL_CUT: "\x1D\x56\x31", // AXIS printer - Partial cut paper
-  AXIS_PARTIAL_CUT_CUSTOM_FEED: "\x1D\x56\x42\x00\x0C", // AXIS printer - Partial cut paper
+ 
 } 
 
 /**
