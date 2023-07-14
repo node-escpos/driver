@@ -1078,33 +1078,6 @@ export class Printer<AdapterCloseArgs extends []> extends EventEmitter {
     return this;
   }
 
-  /**
-   * Axis printer - Paper cut instruction
-   * @return {[Printer]} printer  [the escpos printer instance]
-   */
-
-  axisPartialcut(){
-    this.buffer.write(_.PAPER.AXIS_PARTIAL_CUT);
-    return this;
-  }
-
-  /**
-   * Axis printer - Paper cut instruction
-   * @return {[Printer]} printer  [the escpos printer instance]
-   * @param  {[Number]} feed [description]
-   * @return {[Printer]} printer  [the escpos printer instance]
-   */
-
-  axisPartialcutWithFeed(feed: number){
-    this.buffer.write(_.PAPER.AXIS_PARTIAL_CUT);
-    this.feed(feed);
-    return this;
-  }
-
- 
-
-
-
 }
 
 
