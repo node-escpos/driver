@@ -970,16 +970,16 @@ export class Printer<AdapterCloseArgs extends []> extends EventEmitter {
    * [Function 62 & 63] Set top and bottom logo printing
    * @param  {[String]} pL_pH - Hex string to set the function range
    * @param  {[String]} fn - Hex string to set the receipt enhancement function
-   * @param  {[Number]} kc1 - NV memory keycode 1 of the logo
-   * @param  {[Number]} kc2 - NV memory keycode 2 of the logo
+   * @param  {[Number]} kc1 - NV memory keycode 1 of the logo (32-126)
+   * @param  {[Number]} kc2 - NV memory keycode 2 of the logo (32-126)
    * @param  {[Alignment]} align - Align left, center or right
    * @return {[Printer]} printer  [the escpos printer instance]
    */
   private setLogoPrinting(pL_pH: string, fn: string, kc1: number, kc2: number, align: Alignment = 'lt'): Printer<AdapterCloseArgs> {
     if (kc1 < 32 || kc1 > 126) {
-      throw new Error("Keycode 1 is out of range");
+      throw new Error("Keycode 1 is out of range excepted 32-126");
     } else if (kc2 < 32 || kc2 > 126) {
-      throw new Error("Keycode 2 is out of range");
+      throw new Error("Keycode 2 is out of range excepted 32-126");
     }
 
     this.buffer.write(_.RECEIPT_ENHANCEMENT);
@@ -1077,7 +1077,36 @@ export class Printer<AdapterCloseArgs extends []> extends EventEmitter {
     this.buffer.write(_.TEXT_FORMAT.STAR_CANCEL_TXT_EMPHASIZED);
     return this;
   }
+
+  /**
+   * Axis printer - Paper cut instruction
+   * @return {[Printer]} printer  [the escpos printer instance]
+   */
+
+  axisPartialcut(){
+    this.buffer.write(_.PAPER.AXIS_PARTIAL_CUT);
+    return this;
+  }
+
+  /**
+   * Axis printer - Paper cut instruction
+   * @return {[Printer]} printer  [the escpos printer instance]
+   * @param  {[Number]} feed [description]
+   * @return {[Printer]} printer  [the escpos printer instance]
+   */
+
+  axisPartialcutWithFeed(feed: number){
+    this.buffer.write(_.PAPER.AXIS_PARTIAL_CUT);
+    this.feed(feed);
+    return this;
+  }
+
+ 
+
+
+
 }
+
 
 export default Printer;
 export { default as Image } from "./image";
