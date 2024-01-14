@@ -1,5 +1,11 @@
 # @node-escpos/core
 
+## 0.5.0
+
+### Minor Changes
+
+- 4ea12a9: Allow letters other then 0-9 in barcode printing
+
 ## 0.4.0
 
 ### Minor Changes
