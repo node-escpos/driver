@@ -574,12 +574,12 @@ export class Printer<AdapterCloseArgs extends []> extends EventEmitter {
    * @param  {[type]}    options  [description]
    * @return {[Printer]} printer  [the escpos printer instance]
    */
-  barcode(code: number, type: BarcodeType, options : BarcodeOptions) {
+  barcode(code: number | string, type: BarcodeType, options : BarcodeOptions) {
     options.font = options.font ?? "a";
     options.position = options.position ?? "blw";
     options.includeParity = options.includeParity ?? true;
 
-    const convertCode = code.toString(10);
+    const convertCode = (typeof code === 'number') ? code.toString(10) : code;
     let parityBit = "";
     let codeLength = "";
     if (typeof type === "undefined" || type === null)
@@ -590,6 +590,9 @@ export class Printer<AdapterCloseArgs extends []> extends EventEmitter {
 
     if (type === "EAN8" && convertCode.length !== 7)
       throw new Error("EAN8 Barcode type requires code length 7");
+
+    if (["UPC_A", "UPC-A", "UPC-E", "UPC_E", "EAN13", "EAN8", "ITF", "NW7"].includes(type) && !/^\d+$/.test(convertCode))
+      throw new Error(type + " Barcode type only support numbers")
 
     if (this._model === "qsprinter")
       this.buffer.write(_.MODEL.QSPRINTER.BARCODE_MODE.ON);
