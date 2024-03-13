@@ -1,5 +1,11 @@
 # @node-escpos/core
 
+## 0.6.0
+
+### Minor Changes
+
+- Add function for Xprinter brand printer
+
 ## 0.5.0
 
 ### Minor Changes

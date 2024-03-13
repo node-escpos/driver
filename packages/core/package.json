@@ -1,7 +1,7 @@
 {
   "name": "@node-escpos/core",
   "type": "module",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "packageManager": "pnpm@7.2.1",
   "description": "",
   "author": "Caspian <zhaodonghao586@outlook.com> (https://github.com/dohooo)",
