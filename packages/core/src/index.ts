@@ -25,7 +25,7 @@ export interface PrinterOptions {
   width?: number | undefined
 }
 
-export type PrinterModel = null | "qsprinter";
+export type PrinterModel = null | "qsprinter" | "xprinter";
 
 /**
  * 'dhdw', 'dwh' and 'dhw' are treated as 'dwdh'
@@ -642,7 +642,13 @@ export class Printer<AdapterCloseArgs extends []> extends EventEmitter {
     if (type === "CODE128" || type === "CODE93")
       codeLength = utils.codeLength(convertCode);
 
-    this.buffer.write(`${codeLength + convertCode + (options.includeParity ? parityBit : "")}\x00`); // Allow to skip the parity byte
+    if ((this._model === "xprinter") && type === "CODE128") {
+      const code128Data = utils.genCode128forXprinter(convertCode);
+      this.buffer.write(code128Data);
+    } else {
+      this.buffer.write(`${codeLength + convertCode + (options.includeParity ? parityBit : "")}\x00`); // Allow to skip the parity byte
+    }
+
     if (this._model === "qsprinter")
       this.buffer.write(_.MODEL.QSPRINTER.BARCODE_MODE.OFF);
 
