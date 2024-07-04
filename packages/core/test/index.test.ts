@@ -1,7 +1,8 @@
-import { describe, expect, it } from 'vitest'
-import { splitForCode128, genCode128forXprinter } from '../src/utils';
+import { describe, expect, it, vi } from 'vitest'
+import { splitForCode128, genCode128forXprinter } from '../src/utils'; 
 
 describe('should', () => {
+
   it('exported', () => {
     expect(1).toEqual(1)
   });

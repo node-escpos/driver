@@ -6,23 +6,23 @@ enum Status {
   Error = "error",
 }
 
-interface StatusJSONElementSingle {
+export interface StatusJSONElementSingle {
   bit: number
   value: 0 | 1
   label: string
   status: Status
 }
 
-interface StatusJSONElementMultiple {
+export interface StatusJSONElementMultiple {
   bit: string
   value: string
   label: string
   status: Status
 }
 
-type StatusJSONElement = StatusJSONElementSingle | StatusJSONElementMultiple;
+export type StatusJSONElement = StatusJSONElementSingle | StatusJSONElementMultiple;
 
-interface StatusJSON<T extends string> {
+export interface StatusJSON<T extends string> {
   className: T
   byte: number
   bits: string

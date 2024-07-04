@@ -905,15 +905,26 @@ export class Printer<AdapterCloseArgs extends []> extends EventEmitter {
    * @return {Promise} promise returning given status
    */
   getStatus<T extends DeviceStatus>(StatusClass: StatusClassConstructor<T>): Promise<T> {
-    return new Promise((resolve) => {
-      this.adapter.read((data) => {
-        const byte = data.readInt8(0);
-        resolve(new StatusClass(byte));
+    return new Promise<T>((resolve, reject) => {
+      this.adapter.read((data: Buffer) => {
+        try {
+          if(data.length === 0) {
+            return reject(new Error("Get status timeout"));
+          }
+          const byte = data.readInt8(0);
+          resolve(new StatusClass(byte));
+        } catch (err) {
+          if (typeof err === "string") {
+            console.error(err);
+            reject(new Error(err));
+          } else {
+            console.error(err);
+            reject(err);
+          }
+        }
       });
 
-      StatusClass.commands().forEach((c) => {
-        this.buffer.write(c);
-      });
+      this.adapter.write(StatusClass.commands().join(''));
     });
   }
 
@@ -922,26 +933,25 @@ export class Printer<AdapterCloseArgs extends []> extends EventEmitter {
    * @return {Promise}
    */
   getStatuses(): Promise<DeviceStatus[]> {
-    return new Promise((resolve, reject) => {
-      this.adapter.read((data) => {
-        const buffer: number[] = [];
-        for (let i = 0; i < data.byteLength; i++) buffer.push(data.readInt8(i));
-        if (buffer.length < 4) return reject();
+    return new Promise<DeviceStatus[]> (async (resolve, reject) => {
+      const results:DeviceStatus[] = [];
 
-        const statuses = [
-          new PrinterStatus(buffer[0]),
-          new RollPaperSensorStatus(buffer[1]),
-          new OfflineCauseStatus(buffer[2]),
-          new ErrorCauseStatus(buffer[3]),
-        ];
-        resolve(statuses);
-      });
-
-      [PrinterStatus, RollPaperSensorStatus, OfflineCauseStatus, ErrorCauseStatus].forEach((statusClass) => {
-        statusClass.commands().forEach((command) => {
-          this.adapter.write(command);
-        });
-      });
+      try {
+        results.push(await this.getStatus(PrinterStatus));
+        results.push(await this.getStatus(RollPaperSensorStatus));
+        results.push(await this.getStatus(OfflineCauseStatus));
+        results.push(await this.getStatus(ErrorCauseStatus));
+  
+        resolve(results);
+      } catch (err) {
+        if (typeof err === "string") {
+          console.error(err);
+          reject(new Error(err));
+        } else {
+          console.error(err);
+          reject(err);
+        }
+      }
     });
   }
 
@@ -1091,3 +1101,17 @@ export class Printer<AdapterCloseArgs extends []> extends EventEmitter {
 export default Printer;
 export { default as Image } from "./image";
 export const command = _;
+export {
+  ErrorCauseStatus,
+  OfflineCauseStatus,
+  PrinterStatus,
+  RollPaperSensorStatus,
+} from "./statuses";
+export type {
+  DeviceStatus,
+  StatusClassConstructor,
+  StatusJSON,
+  StatusJSONElement,
+  StatusJSONElementSingle,
+  StatusJSONElementMultiple,
+} from "./statuses";

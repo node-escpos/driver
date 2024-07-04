@@ -8,18 +8,22 @@ import { Adapter } from "@node-escpos/adapter";
 export default class Network extends Adapter<[device: net.Socket]> {
   private readonly address: string;
   private readonly port: number;
-  private readonly timeout: number;
+  private readonly connectTimeout: number;
+  private readonly readTimeout: number;
   private readonly device: net.Socket;
 
   /**
    * @param {[type]} address
    * @param {[type]} port
+   * @param {[type]} connectTimeout
+   * @param {[type]} readTimeout
    */
-  constructor(address: string, port = 9100, timeout = 30000) {
+  constructor(address: string, port = 9100, connectTimeout = 30000, readTimeout = 1000) {
     super();
     this.address = address;
     this.port = port;
-    this.timeout = timeout;
+    this.connectTimeout = connectTimeout;
+    this.readTimeout = readTimeout;
     this.device = new net.Socket();
   }
 
@@ -33,9 +37,9 @@ export default class Network extends Adapter<[device: net.Socket]> {
     const connection_timeout = setTimeout(() => {
       this.device.destroy();
       callback && callback(
-        new Error(`printer connection timeout after ${this.timeout}ms`), this.device,
+        new Error(`printer connection timeout after ${this.connectTimeout}ms`), this.device,
       );
-    }, this.timeout);
+    }, this.connectTimeout);
 
     // connect to net printer by socket (port, ip)
     this.device.on("error", (err) => {
@@ -43,10 +47,10 @@ export default class Network extends Adapter<[device: net.Socket]> {
     }).on("data", (buf) => {
       // eslint-disable-next-line no-console
       console.log("printer say:", buf);
-    }).connect(this.port, this.address, (err?: Error | null) => {
-      clearInterval(connection_timeout);
+    }).connect(this.port, this.address, () => {
+      clearTimeout(connection_timeout);
       this.emit("connect", this.device);
-      callback && callback(err ?? null, this.device);
+      callback && callback(null, this.device);
     });
     return this;
   }
@@ -67,9 +71,21 @@ export default class Network extends Adapter<[device: net.Socket]> {
   }
 
   read(callback?: (data: Buffer) => void) {
-    this.device.on("data", (buf) => {
+    let timeoutId:NodeJS.Timeout|undefined = undefined;
+
+    // listener to pass to socket.once and socket.off
+    const eventListener = (buf: Buffer) => {
+      if(timeoutId !== undefined) clearTimeout(timeoutId);
       if (callback) callback(buf);
-    });
+    }
+
+    // pass empty buffer to callback function when timeout
+    timeoutId = setTimeout(() => {
+      this.device.off("data", eventListener);
+      if (callback) callback(Buffer.from(""));
+    }, this.readTimeout);
+
+    this.device.once("data", eventListener);
     return this;
   }
 
