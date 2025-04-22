@@ -308,18 +308,20 @@ export class Printer<AdapterCloseArgs extends []> extends EventEmitter {
       }
 
       if (align === "CENTER") {
-        const spaces = (cellWidth - textLength) / 2;
-        for (let s = 0; s < spaces; s++) lineStr += " ";
+        const spaces = Math.floor(cellWidth - textLength) / 2;
+        const leftSpaces = Math.ceil(spaces);
+        const rightSpaces = Math.floor(spaces);
+        for (let s = 0; s < leftSpaces; s++) lineStr += " ";
 
         if (obj.text !== "") {
           if (obj.style) lineStr += `${this._getStyle(obj.style)}${obj.text}${this._getStyle("NORMAL")}`;
           else lineStr += obj.text;
         }
 
-        for (let s = 0; s < spaces - 1; s++) lineStr += " ";
+        for (let s = 0; s < rightSpaces; s++) lineStr += " ";
       }
       else if (align === "RIGHT") {
-        let spaces = cellWidth - textLength;
+        let spaces = Math.floor(cellWidth - textLength);
         if (leftoverSpace > 0) {
           spaces += leftoverSpace;
           leftoverSpace = 0;
